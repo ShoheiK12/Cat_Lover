@@ -1,9 +1,12 @@
 // src/pages/ItemDetail.jsx
 import { useParams, Link } from 'react-router-dom';
 import { items } from '../data/items';
+import { useCart } from '../context/CartContext';
 
 function ItemDetail() {
   const { id } = useParams();
+  const { addToCart } = useCart();
+  
   const item = items.find((i) => i.id === id);
 
   if (!item) {
@@ -14,6 +17,11 @@ function ItemDetail() {
       </div>
     );
   }
+  
+  const handleAddToCart = () => {
+    addToCart(item);
+    alert(`${item.name} を買い物かごに追加しました！`);
+  };
 
   return (
     <div style={{ maxWidth: '600px' }}>
@@ -41,7 +49,7 @@ function ItemDetail() {
             cursor: 'pointer',
             marginTop: '15px'
           }}
-          onClick={() => alert(`${item.name} を買い物かごに追加しました（仮）`)}
+          onClick={handleAddToCart}
         >
           買い物かごに入れる
         </button>
