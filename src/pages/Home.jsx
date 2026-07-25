@@ -22,7 +22,7 @@ function Home() {
               style={{ width: '100%', borderRadius: '4px' }}
             />
             <h3>{item.name}</h3>
-            <p>¥{item.price.toLocaleString()}</p>
+            <p>${item.price.toLocaleString()}</p>
             
             <Link
               to={`/items/${item.id}`}

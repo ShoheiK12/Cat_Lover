@@ -4,7 +4,6 @@ import { useCart } from '../context/CartContext';
 function Cart() {
   const { cartItems, removeFromCart } = useCart();
 
-  // 合計金額の計算
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -13,16 +12,16 @@ function Cart() {
   if (cartItems.length === 0) {
     return (
       <div>
-        <h2>買い物かご</h2>
-        <p>現在、買い物かごは空です。🐾</p>
-        <Link to="/">商品一覧へ戻る</Link>
+        <h2>Shopping cart</h2>
+        <p>Your cart is empty at the moment.</p>
+        <Link to="/">Back to item list</Link>
       </div>
     );
   }
 
   return (
     <div style={{ maxWidth: '600px' }}>
-      <h2>買い物かご</h2>
+      <h2>Shopping cart</h2>
       <div style={{ marginTop: '20px' }}>
         {cartItems.map((item) => (
           <div
@@ -38,7 +37,7 @@ function Cart() {
             <div>
               <h3>{item.name}</h3>
               <p>
-                ¥{item.price.toLocaleString()} × {item.quantity}個
+                ${item.price.toLocaleString()} × {item.quantity}個
               </p>
             </div>
             <button
@@ -52,13 +51,13 @@ function Cart() {
                 cursor: 'pointer'
               }}
             >
-              削除
+              Delete
             </button>
           </div>
         ))}
 
         <div style={{ marginTop: '20px', textAlign: 'right' }}>
-          <h3>合計金額: ¥{totalPrice.toLocaleString()}</h3>
+          <h3>Total amount: ${totalPrice.toLocaleString()}</h3>
           <Link
             to="/checkout"
             style={{
@@ -71,7 +70,7 @@ function Cart() {
               borderRadius: '4px'
             }}
           >
-            決済手続きへ進む
+            Proceed with payment
           </Link>
         </div>
       </div>

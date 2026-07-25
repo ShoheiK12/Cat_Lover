@@ -12,20 +12,20 @@ function ItemDetail() {
   if (!item) {
     return (
       <div>
-        <h2>商品が見つかりませんでした。</h2>
-        <Link to="/">トップページへ戻る</Link>
+        <h2>Item is not found.</h2>
+        <Link to="/">Back to top page.</Link>
       </div>
     );
   }
   
   const handleAddToCart = () => {
     addToCart(item);
-    alert(`${item.name} を買い物かごに追加しました！`);
+    alert(`${item.name} has been added to your cart!`);
   };
 
   return (
     <div style={{ maxWidth: '600px' }}>
-      <Link to="/">← 一覧に戻る</Link>
+      <Link to="/">← Back to item list</Link>
       <div style={{ marginTop: '20px' }}>
         <img
           src={item.image}
@@ -34,7 +34,7 @@ function ItemDetail() {
         />
         <h2>{item.name}</h2>
         <p style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-          ¥{item.price.toLocaleString()}
+          ${item.price.toLocaleString()}
         </p>
         <p>{item.description}</p>
         
@@ -51,7 +51,7 @@ function ItemDetail() {
           }}
           onClick={handleAddToCart}
         >
-          買い物かごに入れる
+          Add to your cart
         </button>
       </div>
     </div>
