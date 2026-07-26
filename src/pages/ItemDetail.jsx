@@ -24,34 +24,18 @@ function ItemDetail() {
   };
 
   return (
-    <div style={{ maxWidth: '600px' }}>
+    <div className="page-container">
       <Link to="/">← Back to item list</Link>
-      <div style={{ marginTop: '20px' }}>
-        <img
-          src={item.image}
-          alt={item.name}
-          style={{ width: '100%', borderRadius: '8px' }}
-        />
+      <div className="item-detail-content">
+        <img src={item.image} alt={item.name}/>
         <h2>{item.name}</h2>
-        <p style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
+        <p className="price">
           ${item.price.toLocaleString()}
         </p>
         <p>{item.description}</p>
         
-        <button
-          style={{
-            padding: '10px 20px',
-            fontSize: '1rem',
-            background: '#16a34a',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            marginTop: '15px'
-          }}
-          onClick={handleAddToCart}
-        >
-          Add to your cart
+        <button className="btn-primary" onClick={handleAddToCart}>
+          Add to Cart
         </button>
       </div>
     </div>

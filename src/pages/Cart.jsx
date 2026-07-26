@@ -20,56 +20,26 @@ function Cart() {
   }
 
   return (
-    <div style={{ maxWidth: '600px' }}>
+    <div className="page-container">
       <h2>Shopping cart</h2>
-      <div style={{ marginTop: '20px' }}>
+      <div className="cart-list">
         {cartItems.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              borderBottom: '1px solid #ddd',
-              padding: '10px 0'
-            }}
-          >
+          <div key={item.id} className="cart-item">
             <div>
               <h3>{item.name}</h3>
               <p>
-                ${item.price.toLocaleString()} × {item.quantity}個
+                ${item.price.toLocaleString()} × {item.quantity} items
               </p>
             </div>
-            <button
-              onClick={() => removeFromCart(item.id)}
-              style={{
-                background: '#ef4444',
-                color: '#fff',
-                border: 'none',
-                padding: '6px 12px',
-                borderRadius: '4px',
-                cursor: 'pointer'
-              }}
-            >
+            <button className="btn-danger" onClick={() => removeFromCart(item.id)}>
               Delete
             </button>
           </div>
         ))}
 
-        <div style={{ marginTop: '20px', textAlign: 'right' }}>
+        <div className="cart-summary">
           <h3>Total amount: ${totalPrice.toLocaleString()}</h3>
-          <Link
-            to="/checkout"
-            style={{
-              display: 'inline-block',
-              marginTop: '10px',
-              padding: '10px 20px',
-              background: '#2563eb',
-              color: '#fff',
-              textDecoration: 'none',
-              borderRadius: '4px'
-            }}
-          >
+          <Link to="/checkout" className="btn-checkout">
             Proceed with payment
           </Link>
         </div>

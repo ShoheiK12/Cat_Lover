@@ -8,13 +8,14 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Account from './pages/Account';
+import './App.css';
 
 function App() {
   return (
     <CartProvider>
       <BrowserRouter>
         <Header />
-        <main style={{ padding: '20px' }}>
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/items/:id" element={<ItemDetail />} />
