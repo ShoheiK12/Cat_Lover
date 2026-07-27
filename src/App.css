@@ -202,7 +202,7 @@ main {
   margin: 8px 0;
 }
 
-/* spacing class for layout */
+/* Spacing class for layout */
 
 .mt-10 {
   margin-top: 10px;
@@ -210,4 +210,36 @@ main {
 
 .mt-20 {
   margin-top: 20px;
+}
+
+/* Quantity Controls (Shopping Cart) */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.btn-quantity {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-quantity:hover {
+  background-color: #e5e7eb;
+}
+
+.quantity-display {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
 }
