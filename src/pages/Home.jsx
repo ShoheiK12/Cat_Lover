@@ -2,12 +2,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { items } from '../data/items';
 import { useCart } from '../context/CartContext';
+import { useToast } from '../context/ToastContext';
 
 function Home() {
   const { addToCart } = useCart();
+  const { showToast } = useToast();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    showToast(`Added "${item.name}" to your cart!`);
+  };
 
   const categories = ['All', ...new Set(items.map((item) => item.category))];
 
@@ -73,7 +80,7 @@ function Home() {
                 </Link>
                 <button
                   className="btn-primary"
-                  onClick={() => addToCart(item)}
+                  onClick={() => handleAddToCart(item)}
                 >
                   Add to Cart
                 </button>
