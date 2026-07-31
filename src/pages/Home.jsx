@@ -73,7 +73,7 @@ function Home() {
             <div key={item.id} className="item-card">
               <img src={item.image} alt={item.name} />
               <h3>{item.name}</h3>
-              <p className="price">¥{item.price.toLocaleString()}</p>
+              <p className="price">${item.price.toLocaleString()}</p>
               <div className="card-buttons">
                 <Link to={`/items/${item.id}`} className="btn-detail">
                   View Details
