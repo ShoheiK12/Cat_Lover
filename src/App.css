@@ -176,9 +176,72 @@ main {
   text-align: right;
 }
 
-/* About & Contact Pages */
+/* About */
 
-.about-container, .contact-container {
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.info-title {
+  font-size: 1.5rem;
+  margin-top: 50px;
+  margin-bottom: 30px
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  border-top: 1px solid #e5e7eb;
+  margin: 20px 0 30px 0;
+}
+
+dl.info dt {
+  font-weight: 600;
+  color: #374151;
+  background-color: #f9fafb;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+}
+
+dl.info dd {
+  margin: 0;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.map iframe {
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  dl.info {
+    grid-template-columns: 1fr;
+  }
+
+  dl.info dt {
+    background-color: #f3f4f6;
+    border-bottom: none;
+    padding-bottom: 6px;
+  }
+
+  dl.info dd {
+    padding-top: 4px;
+    padding-left: 16px;
+  }
+}
+
+/* Contact */
+
+.contact-container {
   max-width: 600px;
   line-height: 1.6;
 }
