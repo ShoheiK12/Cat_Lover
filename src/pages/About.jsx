@@ -1,7 +1,7 @@
 function About() {
   return (
     <div className="about-container">
-      <h1>About Cat Lover</h1>
+      <h1>About Cat Lover website</h1>
       <p>
         Welcome to <strong>Cat Lover</strong>! We specialise in providing premium quality products tailored for your feline companions.
       </p>

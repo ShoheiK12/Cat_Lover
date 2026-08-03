@@ -6,10 +6,11 @@ export default function Header() {
       <h2>🐾 Cat Lover</h2>
       <nav className="header-nav">
         <Link to="/">Home</Link>
-        <Link to="/about">Company Information</Link>
+        <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/cart">Shopping Cart</Link>
         <Link to="/account">Account Settings</Link>
+        <div className="animation start-home"></div>
       </nav>
     </header>
   );
