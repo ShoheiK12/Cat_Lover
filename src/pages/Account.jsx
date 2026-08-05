@@ -1,17 +1,22 @@
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 function Account() {
+  const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-
-  // State that keeps user information.
-  const [profile, setProfile] = useState({
-    name: 'Oliver Smith',
-    email: 'oliver@example.co.uk',
-    address: '10 High Street, Sydney, NSW 2000',
-  });
+  
+  // In case of not-lgin
+  if (!user) {
+    return (
+      <div className="account-container">
+        <h1>Account Settings</h1>
+        <p>Please log in to view your account settings.</p>
+      </div>
+    );
+  }
 
   // State that stores input value during while editting.
-  const [formData, setFormData] = useState({ ...profile });
+  const [formData, setFormData] = useState({ ...user });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,14 +28,14 @@ function Account() {
 
   // When clicking edit button
   const handleEditStart = () => {
-    setFormData({ ...profile });
+    setFormData({ ...user });
     setIsEditing(true);
   };
 
   // When clicking save button
   const handleSubmit = (e) => {
     e.preventDefault();
-    setProfile({ ...formData });
+    updateUser(formData);
     setIsEditing(false);
   };
 
@@ -102,9 +107,9 @@ function Account() {
         ) : (
           /* Normal mode */
           <>
-            <p><strong>Name:</strong> {profile.name}</p>
-            <p><strong>Email:</strong> {profile.email}</p>
-            <p><strong>Preferred Delivery Address:</strong> {profile.address}</p>
+            <p><strong>Name:</strong> {user.name}</p>
+            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Preferred Delivery Address:</strong> {user.address}</p>
             <button className="btn-account" onClick={handleEditStart}>
               Edit Profile
             </button>
