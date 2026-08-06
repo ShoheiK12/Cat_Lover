@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 function Account() {
   const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   
+  const [formData, setFormData] = useState(user || {});
+
+  // When user state changes, formData will be synchronised.
+  useEffect(() => {
+    if (user) {
+      setFormData({ ...user });
+    }
+  }, [user]);
+
   // In case of not-lgin
   if (!user) {
     return (
@@ -15,9 +24,6 @@ function Account() {
     );
   }
 
-  // State that stores input value during while editting.
-  const [formData, setFormData] = useState({ ...user });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -26,20 +32,17 @@ function Account() {
     }));
   };
 
-  // When clicking edit button
   const handleEditStart = () => {
     setFormData({ ...user });
     setIsEditing(true);
   };
 
-  // When clicking save button
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUser(formData);
     setIsEditing(false);
   };
 
-  // When clicking cancel button
   const handleCancel = () => {
     setIsEditing(false);
   };
@@ -53,7 +56,6 @@ function Account() {
         <h3>Personal Details</h3>
 
         {isEditing ? (
-          /* Edit mode */
           <form onSubmit={handleSubmit} className="account-form">
             <div className="form-group">
               <label htmlFor="name">Name:</label>
@@ -61,7 +63,7 @@ function Account() {
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name}
+                value={formData.name || ''}
                 onChange={handleChange}
                 required
               />
@@ -73,7 +75,7 @@ function Account() {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
+                value={formData.email || ''}
                 onChange={handleChange}
                 required
               />
@@ -85,7 +87,7 @@ function Account() {
                 type="text"
                 id="address"
                 name="address"
-                value={formData.address}
+                value={formData.address || ''}
                 onChange={handleChange}
                 required
               />
@@ -105,7 +107,6 @@ function Account() {
             </div>
           </form>
         ) : (
-          /* Normal mode */
           <>
             <p><strong>Name:</strong> {user.name}</p>
             <p><strong>Email:</strong> {user.email}</p>

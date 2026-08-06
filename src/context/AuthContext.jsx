@@ -4,10 +4,10 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   // Initial state (default: login)
-  const [user, setUser] = useState({
-    name: 'Oliver Smith',
-    email: 'oliver@example.co.uk',
-    address: '10 High Street, London, SW1A 1AA',
+   const [user, setUser] = useState({
+     name: 'Oliver Smith',
+     email: 'oliver@example.co.uk',
+     address: '10 High Street, Sydney, NSW',
   });
   
   // Initial state (test for not-login)

@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
 import Account from './pages/Account';
 import About from './pages/About';
+import Login from './pages/Login';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/account" element={<Account />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
       </ToastProvider>

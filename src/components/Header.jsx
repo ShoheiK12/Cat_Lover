@@ -12,18 +12,23 @@ export default function Header() {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/cart">Shopping Cart</Link>
-        <Link to="/account">Account Settings</Link>
-        {/* Login -> Account setting page, Not-Login -> Login link*/}
+
         {user ? (
-          <>
-            <Link to="/account">Account Settings</Link>
-            <button className="btn-logout" onClick={logout}>
-              Logout
-            </button>
-          </>
+          <Link to="/account">Account Settings</Link>
         ) : (
           <Link to="/login">Login</Link>
         )}
+
+        {/* 6番目 (120px): ログイン状況で切り替え（未ログイン時は空のspanで枠をキープ） */}
+        {user ? (
+          <Link to="/login" onClick={logout}>
+            Logout
+          </Link>
+        ) : (
+          <span className="nav-placeholder"></span>
+        )}
+  
+        
         <div className="animation start-home"></div>
       </nav>
     </header>

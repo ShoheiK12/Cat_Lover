@@ -18,40 +18,25 @@ main {
   color: #1f2937;
 }
 
-.btn-logout {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0 15px;
-  line-height: 50px;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.btn-logout:hover {
-  opacity: 0.8;
-}
-
 /* Animated Nav Bar */
 .header-nav {
   position: relative;
-  width: 680px; 
+  width: 800px;
   height: 50px;
   background-color: #34495e;
   border-radius: 8px;
   font-size: 0;
 }
 
-.header-nav a {
+.header-nav > a,
+.header-nav > button,
+.header-nav > .nav-placeholder {
   line-height: 50px;
   height: 100%;
   font-size: 14px;
   font-weight: 500;
   display: inline-block;
+  vertical-align: top;
   position: relative;
   z-index: 1;
   text-decoration: none;
@@ -60,6 +45,16 @@ main {
   color: #ffffff;
   cursor: pointer;
   box-sizing: border-box;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  margin: 0;
+}
+
+.header-nav > .nav-placeholder {
+  cursor: default;
+  pointer-events: none;
 }
 
 .header-nav .animation {
@@ -71,41 +66,48 @@ main {
   border-radius: 8px;
 }
 
-.header-nav a:nth-child(1) { width: 90px; }   
-.header-nav a:nth-child(2) { width: 190px; }  
-.header-nav a:nth-child(3) { width: 100px; }  
-.header-nav a:nth-child(4) { width: 140px; }  
-.header-nav a:nth-child(5) { width: 160px; }  
+.header-nav > *:nth-child(1) { width: 90px; }   /* Home */
+.header-nav > *:nth-child(2) { width: 190px; }  /* About */
+.header-nav > *:nth-child(3) { width: 100px; }  /* Contact */
+.header-nav > *:nth-child(4) { width: 140px; }  /* Shopping Cart */
+.header-nav > *:nth-child(5) { width: 160px; }  /* Account Settings / Login */
+.header-nav > *:nth-child(6) { width: 120px; }  /* Logout / Placeholder */
 
 .header-nav .start-home,
-.header-nav a:nth-child(1):hover ~ .animation {
+.header-nav > *:nth-child(1):hover ~ .animation {
   width: 90px;
   left: 0;
   background-color: #1abc9c;
 }
 
-.header-nav a:nth-child(2):hover ~ .animation {
+.header-nav > *:nth-child(2):hover ~ .animation {
   width: 190px;
   left: 90px;
   background-color: #e74c3c;
 }
 
-.header-nav a:nth-child(3):hover ~ .animation {
+.header-nav > *:nth-child(3):hover ~ .animation {
   width: 100px;
   left: 280px;
   background-color: #3498db;
 }
 
-.header-nav a:nth-child(4):hover ~ .animation {
+.header-nav > *:nth-child(4):hover ~ .animation {
   width: 140px;
   left: 380px;
   background-color: #9b59b6;
 }
 
-.header-nav a:nth-child(5):hover ~ .animation {
+.header-nav > *:nth-child(5):hover ~ .animation {
   width: 160px;
   left: 520px;
   background-color: #e67e22;
+}
+
+.header-nav > *:nth-child(6):hover ~ .animation {
+  width: 120px;
+  left: 680px;
+  background-color: #e74c3c;
 }
 
 /* Home */
