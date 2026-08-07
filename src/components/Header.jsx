@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 
-export default function Header() {
+function Header() {
   const { user, logout } = useAuth();
+  const { addToast } = useToast();
+  
+  const handleLogout = () => {
+    logout();
+    addToast('Logged out successfully', 'info');
+  };
   
   return (
     <header className="header">
@@ -19,9 +26,8 @@ export default function Header() {
           <Link to="/login">Login</Link>
         )}
 
-        {/* 6番目 (120px): ログイン状況で切り替え（未ログイン時は空のspanで枠をキープ） */}
         {user ? (
-          <Link to="/login" onClick={logout}>
+          <Link to="/login" onClick={handleLogout}>
             Logout
           </Link>
         ) : (
@@ -34,3 +40,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

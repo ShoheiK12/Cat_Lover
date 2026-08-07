@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 
 function Login() {
   const { login } = useAuth();
+  const { showToast } = useToast();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -32,6 +34,8 @@ function Login() {
       email: formData.email || 'oliver@example.co.uk',
       address: '10 High Street, Sydney, NSW 2000',
     });
+    
+    showToast('Logged in successfully!', 'success');
 
     // Navigate to the page where user wanna go before login.
     navigate(from, { replace: true });
