@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const { login } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  
+  // Obtain location info from ProtectedRoute.
+  const from = location.state?.from?.pathname || '/';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,8 +33,8 @@ function Login() {
       address: '10 High Street, Sydney, NSW 2000',
     });
 
-    // Navigate to account setting page after log-in.
-    navigate('/account');
+    // Navigate to the page where user wanna go before login.
+    navigate(from, { replace: true });
   };
 
   return (
