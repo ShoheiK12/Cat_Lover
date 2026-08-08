@@ -50,12 +50,12 @@ function Checkout() {
         {cartItems.map((item) => (
           <div key={item.id} className="order-summary-item">
             <span>{item.name} × {item.quantity}</span>
-            <span>¥{(item.price * item.quantity).toLocaleString()}</span>
+            <span>${(item.price * item.quantity).toLocaleString()}</span>
           </div>
         ))}
         <div className="order-summary-total">
           <span>Total Amount</span>
-          <span>¥{totalPrice.toLocaleString()}</span>
+          <span>${totalPrice.toLocaleString()}</span>
         </div>
       </div>
 
@@ -68,12 +68,12 @@ function Checkout() {
 
         <div className="form-group">
           <label htmlFor="address">Address Line</label>
-          <input type="text" id="address" required placeholder="e.g. 10 High Street, London" />
+          <input type="text" id="address" required placeholder="e.g. 10 George Street, Sydney" />
         </div>
 
         <div className="form-group">
           <label htmlFor="postcode">Postcode</label>
-          <input type="text" id="postcode" required placeholder="e.g. SW1A 1AA" />
+          <input type="text" id="postcode" required placeholder="e.g. 2000" />
         </div>
 
         <h3>Payment Details</h3>
@@ -83,7 +83,7 @@ function Checkout() {
         </div>
 
         <button type="submit" className="btn-primary">
-          Pay Now (¥{totalPrice.toLocaleString()})
+          Pay Now (${totalPrice.toLocaleString()})
         </button>
       </form>
     </div>

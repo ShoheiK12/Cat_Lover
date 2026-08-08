@@ -27,7 +27,7 @@ function Contact() {
 
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
-            <input type="email" id="email" required placeholder="e.g. oliver@example.co.uk" />
+            <input type="email" id="email" required placeholder="e.g. oliver@example.com" />
           </div>
 
           <div className="form-group">
