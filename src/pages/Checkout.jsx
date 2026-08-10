@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useToast } from '../context/ToastContext';
 
 function Checkout() {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
+  const { showToast } = useToast();
+  const navigate = useNavigate();
   const [orderCompleted, setOrderCompleted] = useState(false);
 
   const totalPrice = cartItems.reduce(
@@ -13,34 +16,48 @@ function Checkout() {
 
   const handlePayment = (e) => {
     e.preventDefault();
+    if (cartItems.length === 0) {
+      showToast('Your cart is empty.');
+      return;
+    };
+    
+    clearCart();
+    
     setOrderCompleted(true);
+
+    showToast('Order placed successfully!');
   };
-
-  if (cartItems.length === 0 && !orderCompleted) {
-    return (
-      <div className="checkout-container">
-        <h2>Checkout</h2>
-        <p>Your shopping cart is empty. Please add items before checking out.</p>
-        <Link to="/">Return to Shop</Link>
-      </div>
-    );
-  }
-
+  
+  // Order Completed Display
   if (orderCompleted) {
     return (
-      <div className="checkout-container">
-        <h2>Order Confirmed!</h2>
-        <div className="success-message">
-          <h3>Thank you for your purchase 🐾</h3>
-          <p>Your order has been placed successfully. A confirmation email has been sent to your address.</p>
-        </div>
+      <div className="account-container text-center">
+        <h1>Thank you for your order! 🐾</h1>
+        <p>Your order has been placed and is being processed.</p>
         <div className="mt-20">
-          <Link to="/">Continue Shopping</Link>
+          <Link to="/" className="btn-account btn-link-reset">
+            Back to Home
+          </Link>
         </div>
       </div>
     );
   }
-
+  
+  // If cart is empty and order not completed yet
+  if (cartItems.length === 0 && !orderCompleted) {
+    return (
+      <div className="checkout-container text-center">
+        <h2>Checkout</h2>
+        <p>Your shopping cart is empty. Please add items before checking out.</p>
+        <div className="mt-20">
+          <Link to="/" className="btn-account btn-link-reset">
+            Return to Shop
+          </Link>
+        </div>
+      </div>
+    );
+  };
+  
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>

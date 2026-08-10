@@ -361,6 +361,10 @@ dl.info dd {
 
 /* Checkout */
 
+.text-center {
+  text-align: center;
+}
+
 .checkout-container, .account-container {
   max-width: 600px;
   line-height: 1.6;
@@ -482,6 +486,10 @@ dl.info dd {
   background-color: #dc2626;
 }
 
+.btn-link-reset {
+  text-decoration: none;
+  display: inline-block;
+}
 
 /* Spacing class for layout */
 
