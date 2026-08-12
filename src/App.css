@@ -855,3 +855,124 @@ dl.info dd {
     grid-template-columns: 1fr;
   }
 }
+
+/* Review Form Styles */
+.review-select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.review-textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.review-form-container {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Review Item Styles */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.review-card {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.review-rating-stars {
+  color: #ffb400;
+  margin: 4px 0;
+}
+
+.review-comment {
+  margin: 6px 0;
+}
+
+.btn-delete-review {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .account-container {
+    padding: 12px;
+  }
+
+  .account-details {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .account-form .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .review-select,
+  .review-textarea,
+  .account-form input {
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .btn-account,
+  .btn-cancel {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .review-card {
+    padding: 12px;
+  }
+
+  .review-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .btn-delete-review {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+}
