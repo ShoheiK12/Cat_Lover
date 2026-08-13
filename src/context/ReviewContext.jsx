@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const ReviewContext = createContext();
 
@@ -26,18 +26,48 @@ const initialReviews = [
   },
 ];
 
-export function ReviewProvider({ children }) {
-  const [reviews, setReviews] = useState(initialReviews);
+const LOCAL_STORAGE_KEY = 'user_reviews_data';
+
+export const ReviewProvider = ({ children }) => {
+  // Obtain data from localStorage when initialised.
+  const [reviews, setReviews] = useState(() => {
+    try {
+      const savedReviews = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (savedReviews) {
+        const parsed = JSON.parse(savedReviews);
+        // if saved data is more than one and array, use them
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+      // If no data or empty array [], use initial sample.
+      return initialReviews;
+    } catch (error) {
+      console.error('Failed to load reviews from localStorage:', error);
+      return initialReviews;
+    }
+  });
+
+  // Save reviews in localStorage everytime they are changed.
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(reviews));
+    } catch (error) {
+      console.error('Failed to save reviews to localStorage:', error);
+    }
+  }, [reviews]);
 
   const addReview = (newReview) => {
-    setReviews((prev) => [
-      { ...newReview, id: Date.now(), date: new Date().toISOString().split('T')[0] },
-      ...prev,
-    ]);
+    const reviewWithId = {
+      ...newReview,
+      id: Date.now(),
+      date: new Date().toLocaleDateString(),
+    };
+    setReviews((prevReviews) => [reviewWithId, ...prevReviews]);
   };
 
   const deleteReview = (id) => {
-    setReviews((prev) => prev.filter((review) => review.id !== id));
+    setReviews((prevReviews) => prevReviews.filter((review) => review.id !== id));
   };
 
   return (
@@ -45,8 +75,12 @@ export function ReviewProvider({ children }) {
       {children}
     </ReviewContext.Provider>
   );
-}
+};
 
-export function useReviews() {
-  return useContext(ReviewContext);
-}
+export const useReviews = () => {
+  const context = useContext(ReviewContext);
+  if (!context) {
+    throw new Error('useReviews must be used within a ReviewProvider');
+  }
+  return context;
+};

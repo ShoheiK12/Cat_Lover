@@ -53,7 +53,10 @@ function Account() {
   
   const handleReviewSubmit = (e) => {
     e.preventDefault();
-    if (!comment.trim()) return;
+    if (!comment.trim()) {
+    alert('Please enter a valid review comment.');
+    return;
+  }
 
     addReview({
       name: user.name || user.email || 'Anonymous',
