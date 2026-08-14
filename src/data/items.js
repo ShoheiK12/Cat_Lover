@@ -22,5 +22,21 @@ export const items = [
     category: 'Toys',
     image: '/images/cat-wand.jpg',
     description: 'Interactive wand toy designed to stimulate natural hunting instincts.'
+  },
+  {
+    id: '4',
+    name: 'Exciting Cat Tower',
+    price: 500,
+    category: 'Beds & Furniture',
+    image: '/images/cat-tower.jpg',
+    description: 'Outstanding cat tower where your feline friend stays comfortably.'
+  },
+  {
+    id: '5',
+    name: 'Healthy cat food',
+    price: 50,
+    category: 'Food & Treats',
+    image: '/images/cat-food.jpg',
+    description: 'Nutritious cat food to keep healthy'
   }
 ];
