@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useReviews } from '../context/ReviewContext';
+import { ReviewHeader } from '../components/ReviewHeader';
 
 function Reviews() {
   const { reviews, addReview, deleteReview } = useReviews();
@@ -77,9 +78,11 @@ function Reviews() {
           </form>
         </div>
 
-        {/* Manage Review */}
         <div className="review-manage-list">
-          <h2>Existing Reviews ({reviews.length})</h2>
+          <h2>Existing Reviews</h2>
+          
+          <ReviewHeader />
+          
           {reviews.map((review) => (
             <div key={review.id} className="review-manage-card">
               <div className="review-manage-meta">

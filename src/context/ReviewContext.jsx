@@ -1,6 +1,8 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 const ReviewContext = createContext();
+
+const LOCAL_STORAGE_KEY = 'user_reviews_data';
 
 const initialReviews = [
   {
@@ -26,52 +28,86 @@ const initialReviews = [
   },
 ];
 
-const LOCAL_STORAGE_KEY = 'user_reviews_data';
-
 export const ReviewProvider = ({ children }) => {
-  // Obtain data from localStorage when initialised.
   const [reviews, setReviews] = useState(() => {
     try {
       const savedReviews = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (savedReviews) {
         const parsed = JSON.parse(savedReviews);
-        // if saved data is more than one and array, use them
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
-      // If no data or empty array [], use initial sample.
       return initialReviews;
     } catch (error) {
-      console.error('Failed to load reviews from localStorage:', error);
+      console.error('Failed to load reviews:', error);
       return initialReviews;
     }
   });
 
-  // Save reviews in localStorage everytime they are changed.
+  const [sortBy, setSortBy] = useState('newest');
+
   useEffect(() => {
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(reviews));
     } catch (error) {
-      console.error('Failed to save reviews to localStorage:', error);
+      console.error('Failed to save reviews:', error);
     }
   }, [reviews]);
 
+  // Add review
   const addReview = (newReview) => {
     const reviewWithId = {
       ...newReview,
       id: Date.now(),
-      date: new Date().toLocaleDateString(),
+      date: new Date().toISOString().split('T')[0],
     };
-    setReviews((prevReviews) => [reviewWithId, ...prevReviews]);
+    setReviews((prev) => [reviewWithId, ...prev]);
   };
 
+  // Delete review
   const deleteReview = (id) => {
-    setReviews((prevReviews) => prevReviews.filter((review) => review.id !== id));
+    setReviews((prev) => prev.filter((review) => review.id !== id));
   };
+
+  // Reset data to sample one
+  const resetReviews = () => {
+    setReviews(initialReviews);
+  };
+
+  // Calculation of average ratings
+  const averageRating = useMemo(() => {
+    if (reviews.length === 0) return 0;
+    const total = reviews.reduce((sum, item) => sum + item.rating, 0);
+    return (total / reviews.length).toFixed(1);
+  }, [reviews]);
+
+  // Sorted review
+  const sortedReviews = useMemo(() => {
+    const list = [...reviews];
+    if (sortBy === 'newest') {
+      return list.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    if (sortBy === 'highest') {
+      return list.sort((a, b) => b.rating - a.rating);
+    }
+    if (sortBy === 'lowest') {
+      return list.sort((a, b) => a.rating - b.rating);
+    }
+    return list;
+  }, [reviews, sortBy]);
 
   return (
-    <ReviewContext.Provider value={{ reviews, addReview, deleteReview }}>
+    <ReviewContext.Provider
+      value={{
+        reviews: sortedReviews,
+        totalCount: reviews.length,
+        averageRating,
+        sortBy,
+        setSortBy,
+        addReview,
+        deleteReview,
+        resetReviews,
+      }}
+    >
       {children}
     </ReviewContext.Provider>
   );

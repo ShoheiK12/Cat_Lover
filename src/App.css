@@ -976,3 +976,60 @@ dl.info dd {
     font-size: 0.85rem;
   }
 }
+
+/* ReviewHeader */
+.review-header {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.review-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.review-average-score {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.review-total-count {
+  color: #666;
+  font-size: 1rem;
+}
+
+.review-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-sort-label {
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+.review-sort-select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.review-reset-button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.review-reset-button:hover {
+  background-color: #e9ecef;
+}
