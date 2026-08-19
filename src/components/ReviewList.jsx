@@ -7,7 +7,7 @@ function ReviewList() {
   return (
     <section className="reviews-section" aria-label="Customer Reviews">
       <div className="reviews-header">
-        <h2>What Our Customers Say</h2>
+        <h2>Customer Reviews</h2>
         <p>Real feedback from cat lovers around the world 🐾</p>
       </div>
 

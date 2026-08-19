@@ -29,7 +29,6 @@ function Reviews() {
       <p className="page-subtitle">Manage customer reviews or share your experience with us.</p>
 
       <div className="reviews-manage-layout">
-        {/* Form for review */}
         <div className="review-form-container">
           <h2>Write a Review</h2>
           <form onSubmit={handleSubmit} className="review-form">

@@ -565,12 +565,27 @@ dl.info dd {
 }
 
 .btn-secondary {
-  background-color: #6b7280;
-  color: white;
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #4b5563;
+  background-color: #bae6fd;
+  color: #0284c7;
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 .btn-cancel {
@@ -815,7 +830,7 @@ dl.info dd {
 
 .reviews-cta {
   text-align: center;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 .reviews-manage-layout {
