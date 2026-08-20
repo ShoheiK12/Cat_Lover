@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
+import { ReviewHeader } from '../components/ReviewHeader';
 
 function Account() {
   const { user, updateUser } = useAuth();
@@ -9,6 +10,11 @@ function Account() {
   const [formData, setFormData] = useState(user || {});
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
+  
+  // Display only reviews of only log-in user.
+  const myReviews = reviews.filter(
+    (review) => review.name === user?.name || review.name === user?.email
+  );
 
   // When user state changes, formData will be synchronised.
   useEffect(() => {
@@ -187,8 +193,11 @@ function Account() {
 
         <div>
           <h4>All Posted Reviews ({reviews.length})</h4>
+          
+          <ReviewHeader />
+          
           {reviews.length === 0 ? (
-            <p>No reviews have been posted yet.</p>
+            <p>You have not posted any reviews yet.</p>
           ) : (
             <div className="review-list">
               {reviews.map((review) => (
