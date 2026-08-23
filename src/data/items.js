@@ -33,10 +33,18 @@ export const items = [
   },
   {
     id: '5',
-    name: 'Healthy cat food',
+    name: 'Healthy Cat food',
     price: 50,
     category: 'Food & Treats',
     image: '/images/cat-food.jpg',
     description: 'Nutritious cat food to keep healthy'
-  }
+  },
+  {
+    id: '6',
+    name: 'Relaxing Cat bed',
+    price: 100,
+    category: 'Food & Treats',
+    image: '/images/cat-bed.jpg',
+    description: 'Warm cat bed making your feline friends unwind'
+  },
 ];
