@@ -14,7 +14,7 @@ function Cart() {
       <div className="page-container">
         <h2>Shopping cart</h2>
         <p>Your cart is empty at the moment.</p>
-        <Link to="/">Back to item list</Link>
+        <Link to="/">Back to Home</Link>
       </div>
     );
   }

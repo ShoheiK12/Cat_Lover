@@ -152,7 +152,7 @@ function Account() {
       </div>
 
       <div className="account-details">
-        <h3>My Reviews & Feedback</h3>
+        <h3>My Reviews</h3>
         <div className="review-form-container">
           <h4>Write a New Review</h4>
           <form onSubmit={handleReviewSubmit} className="account-form">
