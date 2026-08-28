@@ -1069,3 +1069,43 @@ dl.info dd {
 .review-reset-button:hover {
   background-color: #e9ecef;
 }
+
+/* ItemDetail & Review */
+
+.review-divider {
+  margin: 40px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.item-reviews-section .review-form-container {
+  margin: 24px 0;
+}
+
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+}
+
+.star-rating-icon {
+  font-size: 1.5rem;
+  margin-right: 2px;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.star-rating-icon.interactive {
+  cursor: pointer;
+}
+
+.star-rating-icon.readonly {
+  cursor: default;
+}
+
+.star-rating-icon.filled {
+  color: #ffc107;
+}
+
+.star-rating-icon.empty {
+  color: #e4e5e9;
+}
