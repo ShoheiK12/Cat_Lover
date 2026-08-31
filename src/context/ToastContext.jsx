@@ -1,31 +1,51 @@
-import { createContext, useState, useContext, useCallback } from 'react';
+import React, { createContext, useState, useContext, useCallback } from 'react';
 
 const ToastContext = createContext();
 
 export function ToastProvider({ children }) {
-  const [toast, setToast] = useState({ show: false, message: '' });
+  const [toasts, setToasts] = useState([]);
 
-  const showToast = useCallback((message) => {
-    setToast({ show: true, message });
+  const showToast = useCallback((message, type = 'success') => {
+    const id = Date.now();
+    
+    setToasts((prev) => [...prev, { id, message, type }]);
 
     setTimeout(() => {
-      setToast({ show: false, message: '' });
+      setToasts((prev) => prev.filter((t) => t.id !== id));
     }, 3000);
   }, []);
 
+  const removeToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={{ showToast, addToast: showToast }}>
       {children}
-      {toast.show && (
-        <div className="toast-notification" role="status" aria-live="polite">
-          <span className="toast-icon">🐾</span>
-          <span className="toast-message">{toast.message}</span>
-        </div>
-      )}
+      <div className="toast-container">
+        {toasts.map((toast) => (
+          <div
+            key={toast.id}
+            className={`toast-notification toast-${toast.type}`}
+            role="status"
+            aria-live="polite"
+            onClick={() => removeToast(toast.id)}
+          >
+            <span className="toast-icon">
+              {toast.type === 'error' ? '⚠️' : '🐾'}
+            </span>
+            <span className="toast-message">{toast.message}</span>
+          </div>
+        ))}
+      </div>
     </ToastContext.Provider>
   );
 }
 
 export function useToast() {
-  return useContext(ToastContext);
+  const context = useContext(ToastContext);
+  if (!context) {
+    throw new Error('useToast must be used within a ToastProvider');
+  }
+  return context;
 }

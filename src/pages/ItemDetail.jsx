@@ -6,12 +6,14 @@ import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
 import { StarRating } from '../components/StarRating';
 import { ReviewHeader } from '../components/ReviewHeader';
+import { useToast } from '../context/ToastContext';
 
 function ItemDetail() {
   const { id } = useParams();
   const { addToCart } = useCart();
   const { user } = useAuth();
   const { reviews, addReview, deleteReview } = useReviews();
+  const { addToast } = useToast();
 
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
@@ -32,18 +34,19 @@ function ItemDetail() {
 
   const handleAddToCart = () => {
     addToCart(item);
-    alert(`${item.name} has been added to your cart!`);
+    addToast(`${item.name} added to cart!`, 'success');
   };
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     if (!comment.trim()) {
-      alert('Please enter a valid comment.');
+      addToast('Please enter a valid comment.', 'error');
       return;
     }
 
     addReview({
       itemId: id,
+      userId: user?.id || user?.email,
       name: user?.name || user?.email || 'Anonymous',
       rating: Number(rating),
       comment,
@@ -52,7 +55,13 @@ function ItemDetail() {
 
     setComment('');
     setRating(5);
+    addToast('Review submitted successfully!', 'success');
   };
+  
+  const handleDeleteReview = (reviewId) => {
+  deleteReview(reviewId);
+  addToast('Review deleted.', 'info');
+};
 
   return (
     <div className="page-container">
@@ -93,7 +102,6 @@ function ItemDetail() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Share your experience with this item."
-                required
                 className="review-textarea"
               />
             </div>
@@ -108,27 +116,35 @@ function ItemDetail() {
           {itemReviews.length === 0 ? (
             <p>No reviews for this product yet.</p>
           ) : (
-            itemReviews.map((review) => (
-              <div key={review.id} className="review-card">
-                <div className="review-card-header">
-                  <strong>{review.name}</strong>
-                  <span className="review-date">{review.date}</span>
+            itemReviews.map((review) => {
+              const isOwner =
+                user &&
+                ((review.userId && String(user.id || user.email) === String(review.userId)) ||
+                  user.name === review.name ||
+                  user.email === review.name);
+
+              return (
+                <div key={review.id} className="review-card">
+                  <div className="review-card-header">
+                    <strong>{review.name}</strong>
+                    <span className="review-date">{review.date}</span>
+                  </div>
+                  
+                  <StarRating rating={review.rating} readOnly />
+
+                  <p className="review-comment">{review.comment}</p>
+
+                  {isOwner && (
+                    <button
+                      onClick={() => handleDeleteReview(review.id)}
+                      className="btn-delete-review"
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
-                
-                <StarRating rating={review.rating} readOnly />
-
-                <p className="review-comment">{review.comment}</p>
-
-                {(user?.name === review.name || user?.email === review.name) && (
-                  <button
-                    onClick={() => deleteReview(review.id)}
-                    className="btn-delete-review"
-                  >
-                    Delete
-                  </button>
-                )}
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
