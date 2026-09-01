@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
 import { ReviewHeader } from '../components/ReviewHeader';
+import { useToast } from '../context/ToastContext';
+import { StarRating } from '../components/StarRating';
 
 function Account() {
   const { user, updateUser } = useAuth();
   const { reviews, addReview, deleteReview } = useReviews();
+  const { addToast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState(user || {});
   const [rating, setRating] = useState(5);
@@ -13,8 +16,11 @@ function Account() {
   
   // Display only reviews of only log-in user.
   const myReviews = reviews.filter(
-    (review) => review.name === user?.name || review.name === user?.email
-  );
+  (review) =>
+    (review.userId && String(user?.id || user?.email) === String(review.userId)) ||
+    review.name === user?.name ||
+    review.name === user?.email
+);
 
   // When user state changes, formData will be synchronised.
   useEffect(() => {
@@ -51,6 +57,7 @@ function Account() {
     e.preventDefault();
     updateUser(formData);
     setIsEditing(false);
+    addToast('Profile updated successfully!', 'success');
   };
 
   const handleCancel = () => {
@@ -60,19 +67,27 @@ function Account() {
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     if (!comment.trim()) {
-    alert('Please enter a valid review comment.');
-    return;
-  }
+      addToast('Please enter a valid review comment.', 'error');
+      return;
+    }
 
     addReview({
+      userId: user?.id || user?.email,
       name: user.name || user.email || 'Anonymous',
       rating: Number(rating),
       comment,
+      date: new Date().toLocaleDateString(),
     });
 
     // Clear form after adding reviews
     setComment('');
     setRating(5);
+    addToast('Review posted successfully!', 'success');
+  };
+  
+  const handleDeleteReview = (reviewId) => {
+    deleteReview(reviewId);
+    addToast('Review deleted.', 'info'); 
   };
 
   return (
@@ -157,19 +172,8 @@ function Account() {
           <h4>Write a New Review</h4>
           <form onSubmit={handleReviewSubmit} className="account-form">
             <div className="form-group">
-              <label htmlFor="rev-rating">Rating:</label>
-              <select
-                id="rev-rating"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                className="review-select"
-              >
-                <option value="5">★★★★★ (5/5)</option>
-                <option value="4">★★★★☆ (4/5)</option>
-                <option value="3">★★★☆☆ (3/5)</option>
-                <option value="2">★★☆☆☆ (2/5)</option>
-                <option value="1">★☆☆☆☆ (1/5)</option>
-              </select>
+              <label>Rating:</label>
+              <StarRating rating={rating} onRate={(val) => setRating(val)} />
             </div>
 
             <div className="form-group">
@@ -180,7 +184,6 @@ function Account() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Share your thoughts about our products or service..."
-                required
                 className="review-textarea"
               />
             </div>
@@ -200,30 +203,31 @@ function Account() {
             <p>You have not posted any reviews yet.</p>
           ) : (
             <div className="review-list">
-              {reviews.map((review) => (
+              {myReviews.map((review) => (
                 <div key={review.id} className="review-card">
                   <div className="review-card-header">
                     <strong>{review.name}</strong>
                     <span className="review-date">{review.date}</span>
                   </div>
-                  <div className="review-rating-stars">
-                    {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
-                  </div>
+
+                  <StarRating rating={review.rating} readOnly />
+
                   <p className="review-comment">{review.comment}</p>
+
                   <button
-                    onClick={() => deleteReview(review.id)}
+                    onClick={() => handleDeleteReview(review.id)}
                     className="btn-delete-review"
                   >
                     Delete
                   </button>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+             </div>
+           ))}
+         </div>
+        )}
       </div>
     </div>
-  );
+  </div>
+ );
 }
 
 export default Account;
