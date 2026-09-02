@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { items } from '../data/items';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
-import ReviewList from '../components/ReviewList';
+import { useAuth } from '../context/AuthContext';
+import { useReviews } from '../context/ReviewContext';
+import { StarRating } from '../components/StarRating';
+import { ReviewHeader } from '../components/ReviewHeader'; 
 
 function Features() {
   const featureList = [
@@ -51,9 +54,16 @@ function Features() {
 function Home() {
   const { addToCart } = useCart();
   const { showToast } = useToast();
+  
+  const { user } = useAuth();
+  const { reviews, addReview, deleteReview } = useReviews();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  
+  const [selectedItemId, setSelectedItemId] = useState(items[0]?.id || '');
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState('');
   
   const handleAddToCart = (item) => {
     addToCart(item);
@@ -70,6 +80,35 @@ function Home() {
 
     return matchesSearch && matchesCategory;
   });
+  
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    if (!comment.trim()) {
+      showToast('Please enter a valid comment.');
+      return;
+    }
+
+    const selectedItem = items.find((item) => String(item.id) === String(selectedItemId));
+
+    addReview({
+      userId: user?.id || user?.email,
+      name: user?.name || user?.email || 'Anonymous',
+      itemId: selectedItem?.id || '',
+      itemName: selectedItem?.name || '',
+      rating: Number(rating),
+      comment,
+      date: new Date().toLocaleDateString(),
+    });
+
+    setComment('');
+    setRating(5);
+    showToast('Review submitted successfully!');
+  };
+
+  const handleDeleteReview = (reviewId) => {
+    deleteReview(reviewId);
+    showToast('Review deleted.');
+  };
 
   return (
     <div className="page-container">
@@ -148,7 +187,99 @@ function Home() {
         )}
       </section>
       
-      <ReviewList />
+      <section className="reviews-section">
+        <h2>Customer Reviews</h2>
+        <ReviewHeader />
+
+        {user ? (
+          <div className="review-form-container">
+            <h4>Write a Review</h4>
+            <form onSubmit={handleReviewSubmit} className="account-form">
+              <div className="form-group">
+                <label htmlFor="select-product">Select Product:</label>
+                <select
+                  id="select-product"
+                  value={selectedItemId}
+                  onChange={(e) => setSelectedItemId(e.target.value)}
+                  className="review-select"
+                >
+                  {items.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.name} (${item.price})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label>Rating:</label>
+                <StarRating rating={rating} onRate={(val) => setRating(val)} />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="home-rev-comment">Your Review:</label>
+                <textarea
+                  id="home-rev-comment"
+                  rows="3"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="Share your experience..."
+                  className="review-textarea"
+                />
+              </div>
+
+              <button type="submit" className="btn-primary">
+                Post Review
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div className="login-prompt">
+            <p>Want to leave or manage a review? Please log in to your account.</p>
+          </div>
+        )}
+
+        <div className="review-list">
+          {reviews.length === 0 ? (
+            <p>No reviews posted yet.</p>
+          ) : (
+            reviews.map((review) => {
+              const isOwner =
+                user &&
+                ((review.userId && String(user.id || user.email) === String(review.userId)) ||
+                  user.name === review.name ||
+                  user.email === review.name);
+
+              return (
+                <div key={review.id} className="review-card">
+                  <div className="review-card-header">
+                    <strong>{review.name}</strong>
+                    <span className="review-date">{review.date}</span>
+                  </div>
+
+                  {review.itemName && (
+                    <div className="review-product-name">
+                      Product: <strong>{review.itemName}</strong>
+                    </div>
+                  )}
+
+                  <StarRating rating={review.rating} readOnly />
+                  <p className="review-comment">{review.comment}</p>
+
+                  {isOwner && (
+                    <button
+                      onClick={() => handleDeleteReview(review.id)}
+                      className="btn-delete-review"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
+              );
+            })
+          )}
+        </div>
+      </section>
       
     </div>
   );

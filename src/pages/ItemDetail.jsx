@@ -46,6 +46,7 @@ function ItemDetail() {
 
     addReview({
       itemId: id,
+      itemName: item.name,
       userId: user?.id || user?.email,
       name: user?.name || user?.email || 'Anonymous',
       rating: Number(rating),
@@ -83,34 +84,37 @@ function ItemDetail() {
       <div className="item-reviews-section">
         <h3>Customer Reviews ({itemReviews.length})</h3>
 
-
         <ReviewHeader />
 
-        <div className="review-form-container">
-          <h4>Write a Review for {item.name}</h4>
-          <form onSubmit={handleReviewSubmit} className="account-form">
-            <div className="form-group">
-              <label>Rating:</label>
-              <StarRating rating={rating} onRate={(val) => setRating(val)} />
-            </div>
+        {user ? (
+          <div className="review-form-container">
+            <h4>Write a Review for {item.name}</h4>
+            <form onSubmit={handleReviewSubmit} className="account-form">
+              <div className="form-group">
+                <label>Rating:</label>
+                <StarRating rating={rating} onRate={(val) => setRating(val)} />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="item-rev-comment">Your Review:</label>
-              <textarea
-                id="item-rev-comment"
-                rows="3"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Share your experience with this item."
-                className="review-textarea"
-              />
-            </div>
+              <div className="form-group">
+                <label htmlFor="item-rev-comment">Your Review:</label>
+                <textarea
+                  id="item-rev-comment"
+                  rows="3"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="Share your experience with this item."
+                  className="review-textarea"
+                />
+              </div>
 
-            <button type="submit" className="btn-secondary">
-              Submit Review
-            </button>
-          </form>
-        </div>
+              <button type="submit" className="btn-secondary">
+                Submit Review
+              </button>
+            </form>
+          </div>
+        ) : (
+          <p className="login-prompt">Please log in to write a review for this product.</p>
+        )}
 
         <div className="review-list">
           {itemReviews.length === 0 ? (

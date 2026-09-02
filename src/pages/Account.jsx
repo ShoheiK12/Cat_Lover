@@ -4,6 +4,7 @@ import { useReviews } from '../context/ReviewContext';
 import { ReviewHeader } from '../components/ReviewHeader';
 import { useToast } from '../context/ToastContext';
 import { StarRating } from '../components/StarRating';
+import { items } from '../data/items';
 
 function Account() {
   const { user, updateUser } = useAuth();
@@ -13,6 +14,7 @@ function Account() {
   const [formData, setFormData] = useState(user || {});
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
+  const [selectedItemId, setSelectedItemId] = useState('');
   
   // Display only reviews of only log-in user.
   const myReviews = reviews.filter(
@@ -66,14 +68,22 @@ function Account() {
   
   const handleReviewSubmit = (e) => {
     e.preventDefault();
+    if (!selectedItemId) {
+      addToast('Please select a product to review.', 'error');
+      return;
+    }
     if (!comment.trim()) {
       addToast('Please enter a valid review comment.', 'error');
       return;
     }
+    
+    const selectedItem = items.find((item) => String(item.id) === String(selectedItemId));
 
     addReview({
       userId: user?.id || user?.email,
       name: user.name || user.email || 'Anonymous',
+      itemId: selectedItem?.id || '',
+      itemName: selectedItem?.name || '',
       rating: Number(rating),
       comment,
       date: new Date().toLocaleDateString(),
@@ -81,6 +91,7 @@ function Account() {
 
     // Clear form after adding reviews
     setComment('');
+    setSelectedItemId('');
     setRating(5);
     addToast('Review posted successfully!', 'success');
   };
@@ -171,6 +182,27 @@ function Account() {
         <div className="review-form-container">
           <h4>Write a New Review</h4>
           <form onSubmit={handleReviewSubmit} className="account-form">
+            
+            <div className="form-group">
+              <label htmlFor="select-product">Select Product:</label>
+              <select
+                id="select-product"
+                value={selectedItemId}
+                onChange={(e) => setSelectedItemId(e.target.value)}
+                className="review-select"
+                required
+              >
+                <option value="" disabled>
+                  -- Select a Product --
+                </option>
+                {items.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name} (${item.price})
+                  </option>
+                ))}
+              </select>
+            </div>
+            
             <div className="form-group">
               <label>Rating:</label>
               <StarRating rating={rating} onRate={(val) => setRating(val)} />
@@ -195,11 +227,11 @@ function Account() {
         </div>
 
         <div>
-          <h4>All Posted Reviews ({reviews.length})</h4>
+          <h4>My Posted Reviews ({myReviews.length})</h4>
           
           <ReviewHeader />
           
-          {reviews.length === 0 ? (
+          {myReviews.length === 0 ? (
             <p>You have not posted any reviews yet.</p>
           ) : (
             <div className="review-list">
@@ -209,6 +241,12 @@ function Account() {
                     <strong>{review.name}</strong>
                     <span className="review-date">{review.date}</span>
                   </div>
+                  
+                  {review.itemName && (
+                    <div className="review-product-name">
+                      Product: <strong>{review.itemName}</strong>
+                    </div>
+                  )}
 
                   <StarRating rating={review.rating} readOnly />
 
