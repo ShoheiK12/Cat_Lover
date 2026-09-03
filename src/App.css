@@ -859,7 +859,8 @@ dl.info dd {
   margin: 4px 0;
 }
 
-/* Form for review */
+/* Review Styles */
+
 .review-form-container {
   max-width: 500px;
   margin: 0 auto;
@@ -912,13 +913,6 @@ dl.info dd {
   margin-top: 8px;
 }
 
-@media (max-width: 768px) {
-  .reviews-manage-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Review Form Styles */
 .review-select {
   padding: 8px;
   border-radius: 4px;
@@ -979,6 +973,10 @@ dl.info dd {
 }
 
 @media (max-width: 768px) {
+  .reviews-manage-layout {
+    grid-template-columns: 1fr;
+  }
+  
   .account-container {
     padding: 12px;
   }
@@ -1034,6 +1032,7 @@ dl.info dd {
 }
 
 /* ReviewHeader */
+
 .review-header {
   padding: 16px 0;
   border-bottom: 1px solid #eee;
