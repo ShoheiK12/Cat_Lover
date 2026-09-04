@@ -18,10 +18,8 @@ function ItemDetail() {
 
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
-  
-  const { average, count } = AverageRating(reviews, id);
 
-  const item = items.find((i) => i.id === id);
+  const item = items.find((i) => String(i.id) === String(id));
 
   if (!item) {
     return (
@@ -31,6 +29,8 @@ function ItemDetail() {
       </div>
     );
   }
+  
+  const { average, count } = AverageRating(reviews, id);
 
   // Filtering: Dsiplay only items related to reviews
   const itemReviews = reviews.filter((review) => String(review.itemId) === String(id));
