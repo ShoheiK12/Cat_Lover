@@ -307,6 +307,19 @@ main {
   border-radius: 4px;
 }
 
+.card-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.rating-count {
+  font-size: 0.85rem;
+  color: #666;
+}
+
 /* Search & Category Filter Controls */
 .filter-container {
   display: flex;
@@ -1127,4 +1140,16 @@ dl.info dd {
 
 .star-rating-icon.empty {
   color: #e4e5e9;
+}
+
+.item-rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.rating-text {
+  font-size: 0.95rem;
+  color: #555;
 }

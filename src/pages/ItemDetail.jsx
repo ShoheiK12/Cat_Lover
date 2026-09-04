@@ -7,6 +7,7 @@ import { useReviews } from '../context/ReviewContext';
 import { StarRating } from '../components/StarRating';
 import { ReviewHeader } from '../components/ReviewHeader';
 import { useToast } from '../context/ToastContext';
+import AverageRating from '../../utils/reviewUtils';
 
 function ItemDetail() {
   const { id } = useParams();
@@ -17,6 +18,8 @@ function ItemDetail() {
 
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
+  
+  const { average, count } = AverageRating(reviews, id);
 
   const item = items.find((i) => i.id === id);
 
@@ -66,11 +69,19 @@ function ItemDetail() {
 
   return (
     <div className="page-container">
-      <Link to="/">← Back to item list</Link>
+      <Link to="/">← Back to top page</Link>
       
       <div className="item-detail-content">
         <img src={item.image} alt={item.name} />
         <h2>{item.name}</h2>
+        
+        <div className="item-rating-summary">
+          <StarRating rating={Math.round(average)} readOnly />
+          <span className="rating-text">
+            {count > 0 ? `${average} / 5.0 (${count} reviews)` : 'No reviews yet'}
+          </span>
+        </div>
+        
         <p className="price">${item.price.toLocaleString()}</p>
         <p>{item.description}</p>
 

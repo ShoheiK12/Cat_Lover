@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
 import { StarRating } from '../components/StarRating';
 import { ReviewHeader } from '../components/ReviewHeader'; 
+import AverageRating from '../../utils/reviewUtils';
 
 function Features() {
   const featureList = [
@@ -165,10 +166,21 @@ function Home() {
           </div>
         ) : (
           <div className="item-grid">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item) => {
+            const { average, count } = AverageRating(reviews, item.id);
+
+            return (
               <div key={item.id} className="item-card">
                 <img src={item.image} alt={item.name} />
                 <h3>{item.name}</h3>
+
+                <div className="card-rating">
+                  <StarRating rating={Math.round(average)} readOnly />
+                  <span className="rating-count">
+                    {count > 0 ? `${average} (${count})` : 'New'}
+                  </span>
+                </div>
+
                 <p className="price">${item.price.toLocaleString()}</p>
                 <div className="card-buttons">
                   <Link to={`/items/${item.id}`} className="btn-detail">
@@ -182,7 +194,8 @@ function Home() {
                   </button>
                 </div>
               </div>
-            ))}
+            );
+           })}
           </div>
         )}
       </section>
