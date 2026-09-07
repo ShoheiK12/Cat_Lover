@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 const ReviewContext = createContext();
 
@@ -7,6 +7,7 @@ const LOCAL_STORAGE_KEY = 'user_reviews_data';
 const initialReviews = [
   {
     id: 1,
+    itemId: '1',
     name: 'Emily R.',
     rating: 5,
     comment: 'My cat absolutely loves the hammock! Great quality and super cozy.',
@@ -14,6 +15,7 @@ const initialReviews = [
   },
   {
     id: 2,
+    itemId: '1',
     name: 'Mark T.',
     rating: 5,
     comment: 'Fast shipping and eco-friendly packaging. Highly recommended!',
@@ -21,6 +23,7 @@ const initialReviews = [
   },
   {
     id: 3,
+    itemId: '1',
     name: 'Sophia L.',
     rating: 4,
     comment: 'The organic cat grass sprouted in just 3 days. My cat enjoys it very much.',

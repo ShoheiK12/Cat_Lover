@@ -1153,3 +1153,34 @@ dl.info dd {
   font-size: 0.95rem;
   color: #555;
 }
+
+.reviews-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.review-sort-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.review-sort-select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.review-sort-select:focus {
+  outline: none;
+  border-color: #0070f3;
+}

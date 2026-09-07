@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { items } from '../data/items';
 import { useCart } from '../context/CartContext';
@@ -15,10 +15,11 @@ function ItemDetail() {
   const { user } = useAuth();
   const { reviews, addReview, deleteReview } = useReviews();
   const { addToast } = useToast();
-
+  
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
-
+  const [sortOrder, setSortOrder] = useState('newest');
+  
   const item = items.find((i) => String(i.id) === String(id));
 
   if (!item) {
@@ -34,6 +35,32 @@ function ItemDetail() {
 
   // Filtering: Dsiplay only items related to reviews
   const itemReviews = reviews.filter((review) => String(review.itemId) === String(id));
+  
+  // Sort reviews
+  const sortedReviews = useMemo(() => {
+  return [...itemReviews].sort((a, b) => {
+    const numA = Number(a.rating) || 0;
+    const numB = Number(b.rating) || 0;
+
+    if (sortOrder === 'highest') {
+      return numB - numA;
+    }
+    if (sortOrder === 'lowest') {
+      return numA - numB;
+    }
+    if (sortOrder === 'newest') {
+      const timeA = new Date(a.date).getTime() || 0;
+      const timeB = new Date(b.date).getTime() || 0;
+      return timeB - timeA;
+    }
+    if (sortOrder === 'oldest') {
+      const timeA = new Date(a.date).getTime() || 0;
+      const timeB = new Date(b.date).getTime() || 0;
+      return timeA - timeB;
+    }
+    return 0;
+  });
+}, [itemReviews, sortOrder]);
 
   const handleAddToCart = () => {
     addToCart(item);
@@ -54,7 +81,8 @@ function ItemDetail() {
       name: user?.name || user?.email || 'Anonymous',
       rating: Number(rating),
       comment,
-      date: new Date().toLocaleDateString(),
+      date: new Date().toISOString().split('T')[0],
+      createdAt: Date.now(),
     });
 
     setComment('');
@@ -93,7 +121,27 @@ function ItemDetail() {
       <hr className="review-divider" />
 
       <div className="item-reviews-section">
-        <h3>Customer Reviews ({itemReviews.length})</h3>
+        
+        <div className="reviews-header-flex">
+          <h3>Customer Reviews ({itemReviews.length})</h3>
+
+          {itemReviews.length > 0 && (
+            <div className="review-sort-container">
+              <label htmlFor="review-sort">Sort by: </label>
+              <select
+                id="review-sort"
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value)}
+                className="review-sort-select"
+              >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="highest">Highest Rating</option>
+                <option value="lowest">Lowest Rating</option>
+              </select>
+            </div>
+          )}
+        </div>
 
         <ReviewHeader />
 
@@ -128,10 +176,10 @@ function ItemDetail() {
         )}
 
         <div className="review-list">
-          {itemReviews.length === 0 ? (
+          {sortedReviews.length === 0 ? (
             <p>No reviews for this product yet.</p>
           ) : (
-            itemReviews.map((review) => {
+            sortedReviews.map((review) => {
               const isOwner =
                 user &&
                 ((review.userId && String(user.id || user.email) === String(review.userId)) ||
