@@ -15,6 +15,7 @@ import Checkout from './pages/Checkout';
 import Account from './pages/Account';
 import About from './pages/About';
 import Login from './pages/Login';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
                 <Route path="/login" element={<Login />} />
               </Routes>
             </main>
+            
+            <Footer />
+            
           </ReviewProvider>
         </ToastProvider>
       </CartProvider>
