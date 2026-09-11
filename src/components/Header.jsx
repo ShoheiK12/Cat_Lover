@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
+import { useWishlist } from '../context/WishlistContext';
 
 function Header() {
   const { user, logout } = useAuth();
   const { addToast } = useToast();
+  const { wishlist } = useWishlist();
   
   const handleLogout = () => {
     logout();
@@ -18,6 +20,9 @@ function Header() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/wishlist">
+          Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
+        </Link>
         <Link to="/cart">Shopping Cart</Link>
 
         {user ? (

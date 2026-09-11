@@ -8,6 +8,7 @@ import { StarRating } from '../components/StarRating';
 import { ReviewHeader } from '../components/ReviewHeader';
 import { useToast } from '../context/ToastContext';
 import AverageRating from '../../utils/reviewUtils';
+import { useWishlist } from '../context/WishlistContext';
 
 function ItemDetail() {
   const { id } = useParams();
@@ -20,6 +21,8 @@ function ItemDetail() {
   const [comment, setComment] = useState('');
   const [sortOrder, setSortOrder] = useState('newest');
   
+  const { wishlist, toggleWishlist, isInWishlist } = useWishlist();
+  
   const item = items.find((i) => String(i.id) === String(id));
 
   if (!item) {
@@ -30,6 +33,8 @@ function ItemDetail() {
       </div>
     );
   }
+
+  const isFavorite = isInWishlist(item.id);
   
   const { average, count } = AverageRating(reviews, id);
 
@@ -112,10 +117,20 @@ function ItemDetail() {
         
         <p className="price">${item.price.toLocaleString()}</p>
         <p>{item.description}</p>
-
-        <button className="btn-primary" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
+        
+        <div className="action-buttons">
+          <button className="btn-primary" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+  
+          <button 
+            className={`btn-wishlist ${isFavorite ? 'active' : ''}`} 
+            onClick={() => toggleWishlist(item)}
+          >
+            {isFavorite ? '♥ In Wishlist' : '♡ Add to Wishlist'}
+          </button>
+       </div>
+       
       </div>
 
       <hr className="review-divider" />

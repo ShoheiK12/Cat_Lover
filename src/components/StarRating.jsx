@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const StarRating = ({ rating, onRate, readOnly = false }) => {
   return (
     <div className="star-rating">
