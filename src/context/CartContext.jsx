@@ -32,10 +32,11 @@ export function CartProvider({ children }) {
         .map((cartItem) => {
           if (cartItem.id === id) {
             const newQuantity = cartItem.quantity + delta;
-            return newQuantity > 0 ? { ...cartItem, quantity: newQuantity } : cartItem;
+            return { ...cartItem, quantity: newQuantity };
           }
           return cartItem;
         })
+        .filter((cartItem) => cartItem.quantity > 0)
     );
   };
   
@@ -46,9 +47,28 @@ export function CartProvider({ children }) {
   const clearCart = () => {
     setCartItems([]);
   };
+  
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const totalPrice = cartItems.reduce((sum, item) => {
+    const numericPrice = typeof item.price === 'number' 
+      ? item.price 
+      : parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0;
+    return sum + numericPrice * item.quantity;
+  }, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, updateQuantity, removeFromCart, clearCart }}>
+    <CartContext.Provider 
+      value={{ 
+        cartItems, 
+        addToCart, 
+        updateQuantity, 
+        removeFromCart, 
+        clearCart,
+        totalItems,
+        totalPrice 
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
