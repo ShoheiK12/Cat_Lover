@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useReviews } from '../context/ReviewContext';
+import { StarRating } from './StarRating';
 
 function ReviewList() {
   const { reviews } = useReviews();
@@ -18,9 +19,7 @@ function ReviewList() {
               <span className="review-author">{review.name}</span>
               <span className="review-date">{review.date}</span>
             </div>
-            <div className="review-stars">
-              {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
-            </div>
+            <StarRating rating={review.rating} readOnly={true} />
             <p className="review-comment">"{review.comment}"</p>
           </div>
         ))}
