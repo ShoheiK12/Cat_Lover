@@ -32,7 +32,7 @@ The objective of this project was to build a seamless, user-centric online shopp
 
 ### Application Architecture
 
-<img width="173" height="83" alt="Image" src="./assets/architecture-tree.png" />
+<img width="173" height="83" alt="Application Architecture" src="https://github.com/user-attachments/assets/3c1600b4-74b2-4d84-a172-cbcca0ec1484" />
 
 
 ---
