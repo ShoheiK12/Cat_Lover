@@ -32,18 +32,7 @@ The objective of this project was to build a seamless, user-centric online shopp
 
 ### Application Architecture
 
-src/
-├── components/          # Reusable UI components (Header, StarRating, ReviewList, etc.)
-├── context/             # React Context Providers for global state management
-│   ├── AuthContext.jsx
-│   ├── CartContext.jsx
-│   ├── ReviewContext.jsx
-│   ├── ToastContext.jsx
-│   └── WishlistContext.jsx
-├── pages/               # Top-level route components (Home, ItemDetail, Cart, Wishlist, etc.)
-├── App.jsx              # Main router and provider configuration
-├── App.css              # Universal application stylesheet
-└── main.jsx             # React DOM entry point
+<img width="173" height="83" alt="Image" src="./assets/architecture-tree.png" />
 
 
 ---
