@@ -47,7 +47,7 @@ The objective of this project was to build a seamless, user-centric online shopp
 - **Challenge:** The star rating system initially rendered as standard black unicode glyphs on certain operating systems instead of gold rating indicators.
 - **Solution:** Refactored star rendering into a standalone `StarRating` component utilising explicit class bindings (`.star-rating-icon.filled`, `.star-rating-icon.empty`) combined with strict font-family declarations and CSS specificity overlays (`!important`) to ensure standard gold (`#f59e0b`) output across all environments.
 
-### 3. Route Synchronization & Component Sizing Alignment
+### 3. Route Synchronisation & Component Sizing Alignment
 - **Challenge:** Button elements across product detail and action sections exhibited structural height and margin mismatches.
 - **Solution:** Standardised shared action container rules (`.action-buttons`) using CSS Flexbox `gap` properties alongside uniform padding and typography specifications for `.btn-primary` and `.btn-wishlist`.
 
@@ -62,7 +62,7 @@ The objective of this project was to build a seamless, user-centric online shopp
 
 ## Local Development Setup
 
-Follow these instructions to run the application locally on your machine.
+Follow these instructions to run the application locally on your computer.
 
 ### Prerequisites
 - **Node.js:** `v18.0.0` or higher
@@ -73,6 +73,14 @@ Follow these instructions to run the application locally on your machine.
 ## Local Development Setup
 
 To run this project locally on your machine, follow these steps:
+
+## Demo Authentication Credentials
+
+> **Note for Testing / Demonstration:**  
+> This application uses a simulated authentication flow for demonstration purposes. You do not need a pre-registered account to log in.
+>
+> - **Email:** Any valid email format (e.g. `demo@example.com`, `test@catlover.com`)
+> - **Password:** Any string with a minimum length of **6 characters** (e.g. `123456`, `password`)
 
 ### 1. Clone the Repository
 
@@ -90,7 +98,7 @@ npm install
 ```
 
 ### 3. Launch Development Server
-Start the local development server with Hot Module Replacement (HMR) enabled:
+Start the local development server with:
 
 ```bash
 npm run dev
