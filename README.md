@@ -76,7 +76,7 @@ To run this project locally on your machine, follow these steps:
 
 ## Demo Authentication Credentials
 
-> **Note for Testing / Demonstration:**  
+> **Note for Testing**  
 > This application uses a simulated authentication flow for demonstration purposes. You do not need a pre-registered account to log in.
 >
 > - **Email:** Any valid email format (e.g. `demo@example.com`, `test@catlover.com`)
