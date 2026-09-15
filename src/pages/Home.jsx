@@ -37,7 +37,7 @@ function Features() {
     <section className="features-section" aria-label="Why Choose Us">
       <div className="features-header">
         <h2>Why Choose Us</h2>
-        <p>Providing the very best for your beloved feline family members.</p>
+        <p>Providing the best items for your beloved feline family members.</p>
       </div>
       <div className="features-grid">
         {featureList.map((feature, index) => (
@@ -236,7 +236,7 @@ function Home() {
                   rows="3"
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                  placeholder="Share your experience..."
+                  placeholder="Leave a review"
                   className="review-textarea"
                 />
               </div>
