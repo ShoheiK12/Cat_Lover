@@ -122,6 +122,12 @@ The routing behaviour is managed by the following rule in the root directory:
 
 ---
 
+## Attributions & Credits
+
+- **Product Photography:** All product and visual photography used across this application are sourced from [Unsplash](https://unsplash.com) under the Unsplash License.
+
+---
+
 ## Author
 
 Shohei Kotera
