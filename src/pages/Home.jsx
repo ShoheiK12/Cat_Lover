@@ -36,7 +36,7 @@ function Features() {
   return (
     <section className="features-section" aria-label="Why Choose Us">
       <div className="features-header">
-        <h2>Why Choose Us</h2>
+        <h2 className='features-headline'>Why Choose Us</h2>
         <p>Providing the best items for your beloved feline family members.</p>
       </div>
       <div className="features-grid">
@@ -115,7 +115,7 @@ function Home() {
     <div className="page-container">
       <section className="hero-section">
         <div className="hero-content">
-          <h1>Premium Comfort for Your Feline Friends 🐾</h1>
+          <h1 className='hero-headline'>Premium Comfort for Your Feline Friends 🐾</h1>
           <p>Discover high-quality toys, food, and cozy accessories crafted with love.</p>
           <a href="#products-section" className="btn-primary hero-btn">
             Explore Shop
@@ -126,7 +126,7 @@ function Home() {
       <Features />
       
       <section id="products-section" className="products-section">
-        <h1>Goods for cat lovers</h1>
+        <h1 className='products-headline'>Goods for cat lovers</h1>
         <p>Explore our range of favourite items for your feline companions.</p>
 
         <div className="filter-container">
@@ -201,7 +201,7 @@ function Home() {
       </section>
       
       <section className="reviews-section">
-        <h2>Customer Reviews</h2>
+        <h2 className='reviews-headline'>Customer Reviews</h2>
         <ReviewHeader />
 
         {user ? (
