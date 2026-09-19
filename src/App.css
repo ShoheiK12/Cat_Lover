@@ -306,8 +306,8 @@ main {
 .products-headline {
   padding: 0.5em;
   color: #010101;
-  background: #eaf3ff;
-  border-bottom: solid 3px #516ab6;
+  background: #efbc58;
+  border-bottom: solid 3px #c57a09;
 }
 
 .item-list {
@@ -580,10 +580,21 @@ main {
   padding: 20px;
 }
 
+.about-headline {
+  color: #364e96;
+  padding: 0.5em 0;
+  border-top: solid 3px #364e96;
+  border-bottom: solid 3px #364e96;
+}
+
 .info-title {
   font-size: 1.5rem;
   margin-top: 50px;
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  padding: 0.25em 0.5em;
+  color: #7db4e6;
+  background: transparent;
+  border-left: solid 5px #7db4e6;
 }
 
 dl.info {
@@ -640,6 +651,13 @@ dl.info dd {
 .contact-container {
   max-width: 600px;
   line-height: 1.6;
+}
+
+.contact-headline {
+  color: #364e96;
+  padding: 0.5em 0;
+  border-top: solid 3px #364e96;
+  border-bottom: solid 3px #364e96;
 }
 
 .contact-form {

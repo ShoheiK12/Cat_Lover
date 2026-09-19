@@ -10,7 +10,7 @@ function Contact() {
 
   return (
     <div className="contact-container">
-      <h1>Contact Us</h1>
+      <h1 className='contact-headline'>Contact Us</h1>
       <p>Have a question or feedback regarding our items? Please send us an enquiry below.</p>
 
       {submitted ? (
