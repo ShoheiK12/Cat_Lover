@@ -7,7 +7,7 @@ function Wishlist() {
   if (wishlist.length === 0) {
     return (
       <div className="page-container">
-        <h2>Your Wishlist is Empty</h2>
+        <h2 className='wishlist-empty'>Your Wishlist is Empty</h2>
         <p>No favorite items saved yet.</p>
         <Link to="/">Explore Items</Link>
       </div>
@@ -16,7 +16,7 @@ function Wishlist() {
 
   return (
     <div className="page-container">
-      <h2>My Wishlist ({wishlist.length})</h2>
+      <h2 className='wishlist-headline'>My Wishlist ({wishlist.length})</h2>
       <div className="item-grid">
         {wishlist.map((item) => (
           <div key={item.id} className="item-card">
