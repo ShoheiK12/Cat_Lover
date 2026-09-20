@@ -23,8 +23,8 @@ function Wishlist() {
             <img src={item.image} alt={item.name} />
             <h3>{item.name}</h3>
             <p>${item.price}</p>
-            <Link to={`/items/${item.id}`} className="btn-secondary">View Detail</Link>
-            <button onClick={() => toggleWishlist(item)} className="btn-remove">Remove</button>
+            <Link to={`/items/${item.id}`} className="btn-detail">View Detail</Link>
+            <button onClick={() => toggleWishlist(item)} className="btn-danger">Remove</button>
           </div>
         ))}
       </div>
