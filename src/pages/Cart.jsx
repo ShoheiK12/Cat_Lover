@@ -24,7 +24,7 @@ function Cart() {
 
   return (
     <div className="page-container">
-      <h2>Shopping Cart</h2>
+      <h2 className='cart-headline'>Shopping Cart</h2>
       <div className="cart-list">
         {cartItems.map((item) => {
           const isFavorite = isInWishlist(item.id);

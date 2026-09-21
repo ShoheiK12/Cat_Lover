@@ -148,7 +148,6 @@ main {
 .account-container,
 .about-container,
 .cart-container,
-.login-container,
 .item-detail-container {
   max-width: 1200px;
   width: 100%;
@@ -565,6 +564,13 @@ main {
 
 /* Shopping Cart */
 
+.cart-headline {
+  color: #36964c;
+  padding: 0.5em 0;
+  border-top: solid 3px #36964c;
+  border-bottom: solid 3px #36964c;
+}
+
 .cart-list {
   margin-top: 20px;
 }
@@ -738,7 +744,7 @@ dl.info dd {
   margin-top: 8px;
 }
 
-/* Account Pages */
+/* Account Page / Login Page */
 
 .account-details {
   border: 1px solid #e5e7eb;
@@ -848,6 +854,32 @@ dl.info dd {
 .btn-link-reset {
   text-decoration: none;
   display: inline-block;
+}
+
+.login-headline {
+  position: relative;
+  padding-left: 25px;
+}
+
+.login-headline:before {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px rgb(119, 195, 223);
+}
+
+.login-headline:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px rgb(119, 195, 223);
 }
 
 .login-prompt {
