@@ -206,7 +206,7 @@ function Home() {
 
         {user ? (
           <div className="review-form-container">
-            <h4>Write a Review</h4>
+            <h4 className="detail-sentence">Write a Review</h4>
             <form onSubmit={handleReviewSubmit} className="account-form">
               <div className="form-group">
                 <label htmlFor="select-product">Select Product:</label>
