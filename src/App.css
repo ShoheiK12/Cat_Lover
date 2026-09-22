@@ -616,10 +616,10 @@ main {
 }
 
 .about-headline {
-  color: #364e96;
+  color: #963b36;
   padding: 0.5em 0;
-  border-top: solid 3px #364e96;
-  border-bottom: solid 3px #364e96;
+  border-top: solid 3px #963b36;
+  border-bottom: solid 3px #963b36;
 }
 
 .info-title {
@@ -627,9 +627,9 @@ main {
   margin-top: 50px;
   margin-bottom: 30px;
   padding: 0.25em 0.5em;
-  color: #7db4e6;
+  color: #e6bc7d;
   background: transparent;
-  border-left: solid 5px #7db4e6;
+  border-left: solid 5px #e6bc7d;
 }
 
 dl.info {
@@ -746,6 +746,13 @@ dl.info dd {
 
 /* Account Page / Login Page */
 
+.account-headline {
+  color: #c0251d;
+  padding: 0.5em 0;
+  border-top: solid 3px #c0251d;
+  border-bottom: solid 3px #c0251d;
+}
+
 .account-details {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -756,6 +763,29 @@ dl.info dd {
 
 .account-details p {
   margin: 8px 0;
+}
+
+.detail-headline {
+  background: #dc6761;
+  color: white;
+  padding: 0.5em;
+}
+
+.detail-sentence {
+  position: relative;
+  padding: 0.6em;
+  background: #efec33;
+}
+
+.detail-sentence:after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 30px;
+  border: 15px solid transparent;
+  border-top: 15px solid #efec33;
+  width: 0;
+  height: 0;
 }
 
 .account-form .form-group {

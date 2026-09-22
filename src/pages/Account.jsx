@@ -103,11 +103,11 @@ function Account() {
 
   return (
     <div className="account-container">
-      <h1>Account Settings</h1>
+      <h1 className='account-headline'>Account Settings</h1>
       <p>Manage your account details and view your recent orders.</p>
 
       <div className="account-details">
-        <h3>Personal Details</h3>
+        <h3 className='detail-headline'>Personal Details</h3>
 
         {isEditing ? (
           <form onSubmit={handleProfileSubmit} className="account-form">
@@ -173,14 +173,14 @@ function Account() {
       </div>
 
       <div className="account-details">
-        <h3>Order History</h3>
+        <h3 className='detail-headline'>Order History</h3>
         <p>You have no recent orders to display.</p>
       </div>
 
       <div className="account-details">
-        <h3>My Reviews</h3>
+        <h3 className='detail-headline'>My Reviews</h3>
         <div className="review-form-container">
-          <h4>Write a New Review</h4>
+          <h4 className='detail-sentence'>Write a New Review</h4>
           <form onSubmit={handleReviewSubmit} className="account-form">
             
             <div className="form-group">
@@ -227,7 +227,7 @@ function Account() {
         </div>
 
         <div>
-          <h4>My Posted Reviews ({myReviews.length})</h4>
+          <h4 className='detail-sentence'>My Posted Reviews ({myReviews.length})</h4>
           
           <ReviewHeader />
           
