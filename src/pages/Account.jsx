@@ -104,7 +104,7 @@ function Account() {
   return (
     <div className="account-container">
       <h1 className='account-headline'>Account Settings</h1>
-      <p>Manage your account details and view your recent orders.</p>
+      <p className='account-sentence'>Manage your account details and view your recent orders.</p>
 
       <div className="account-details">
         <h3 className='detail-headline'>Personal Details</h3>
@@ -174,7 +174,7 @@ function Account() {
 
       <div className="account-details">
         <h3 className='detail-headline'>Order History</h3>
-        <p>You have no recent orders to display.</p>
+        <p className='account-sentence'>You have no recent orders to display.</p>
       </div>
 
       <div className="account-details">

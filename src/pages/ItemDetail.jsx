@@ -106,7 +106,7 @@ function ItemDetail() {
       
       <div className="item-detail-content">
         <img src={item.image} alt={item.name} />
-        <h2>{item.name}</h2>
+        <h2 className='item-detail-headline'>{item.name}</h2>
         
         <div className="item-rating-summary">
           <StarRating rating={Math.round(average)} readOnly />
