@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useWishlist } from '../context/WishlistContext';
+import EmptyState from '../components/EmptyState';
 
 function Wishlist() {
   const { wishlist, toggleWishlist } = useWishlist();
@@ -7,9 +8,14 @@ function Wishlist() {
   if (wishlist.length === 0) {
     return (
       <div className="page-container">
-        <h2 className='wishlist-empty'>Your Wishlist is Empty</h2>
-        <p>No favorite items saved yet.</p>
-        <Link to="/">Explore Items</Link>
+        <h2 className="wishlist-headline">My Wishlist</h2>
+        <EmptyState
+          icon="💖"
+          title="Your wishlist is empty"
+          message="Save your favourite cat items here by clicking the heart icon on any product."
+          buttonText="Explore Items"
+          buttonLink="/"
+        />
       </div>
     );
   }

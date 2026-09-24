@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import EmptyState from '../components/EmptyState';
 
 function Cart() {
   const { cartItems, updateQuantity, removeFromCart } = useCart();
@@ -15,9 +16,14 @@ function Cart() {
   if (cartItems.length === 0) {
     return (
       <div className="page-container">
-        <h2>Shopping cart</h2>
-        <p>Your cart is empty at the moment.</p>
-        <Link to="/">Back to Home</Link>
+        <h2 className="cart-headline">Shopping Cart</h2>
+        <EmptyState
+          icon="🛒"
+          title="Your shopping cart is empty"
+          message="Looks like you haven't added any cute cat products to your cart yet!"
+          buttonText="Start Shopping"
+          buttonLink="/"
+        />
       </div>
     );
   }

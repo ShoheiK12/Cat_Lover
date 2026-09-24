@@ -54,9 +54,12 @@ The objective of this project was to build a seamless, user-centric online shopp
 ---
 
 ### Visual & Interactive Features
-- **Responsive Review Cards:** Multi-column CSS Grid layouts displaying user feedback with customizable star rating indicators and colorful gradient accents.
-- **Interactive Action Buttons:** Primary cart actions paired with dual-state wishlist buttons featuring subtle micro-interactions (`translateY` hover lifts and active scale presses).
-- **Global Toast Notifications:** Non-intrusive feedback overlays for authentication state changes and item additions.
+- **User-Friendly UX:** 
+  - **Empty States:** Clear visual guidance and CTAs using custom `EmptyState` components when Cart or Wishlist are empty.
+  - **Toast Notifications:** Real-time feedback (`ToastContext`) when items are added/removed.
+  - **Responsive Design:** Consistent card layouts, group selectors, and refined orange-tone palettes across pages.
+  - **Interactive Action Buttons:** Primary cart actions paired with dual-state wishlist buttons featuring subtle micro-interactions (`translateY` hover lifts and active scale presses).
+\
 
 ---
 
