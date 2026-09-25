@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
+import EmptyState from '../components/EmptyState';
 
 function Checkout() {
   const { cartItems, clearCart } = useCart();
   const { showToast } = useToast();
   const navigate = useNavigate();
-  const [orderCompleted, setOrderCompleted] = useState(false);
-
+  
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -23,40 +23,26 @@ function Checkout() {
     
     clearCart();
     
-    setOrderCompleted(true);
-
-    showToast('Order placed successfully!');
+    showToast('Order placed successfully! 🐾', 'success');
+    
+    navigate('/order-confirmation');
   };
   
-  // Order Completed Display
-  if (orderCompleted) {
+  // If cart is empty and order not completed yet
+  if (cartItems.length === 0) {
     return (
-      <div className="account-container text-center">
-        <h1>Thank you for your order! 🐾</h1>
-        <p>Your order has been placed and is being processed.</p>
-        <div className="mt-20">
-          <Link to="/" className="btn-account btn-link-reset">
-            Back to Home
-          </Link>
-        </div>
+      <div className="checkout-container">
+        <h2>Checkout</h2>
+        <EmptyState
+          icon="🛒"
+          title="Your shopping cart is empty"
+          message="Please add items to your cart before proceeding to checkout."
+          buttonText="Return to Shop"
+          buttonLink="/"
+        />
       </div>
     );
   }
-  
-  // If cart is empty and order not completed yet
-  if (cartItems.length === 0 && !orderCompleted) {
-    return (
-      <div className="checkout-container text-center">
-        <h2>Checkout</h2>
-        <p>Your shopping cart is empty. Please add items before checking out.</p>
-        <div className="mt-20">
-          <Link to="/" className="btn-account btn-link-reset">
-            Return to Shop
-          </Link>
-        </div>
-      </div>
-    );
-  };
   
   return (
     <div className="checkout-container">

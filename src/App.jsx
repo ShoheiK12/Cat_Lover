@@ -19,6 +19,7 @@ import Checkout from './pages/Checkout';
 import Account from './pages/Account';
 import About from './pages/About';
 import Login from './pages/Login';
+import OrderConfirmation from './pages/OrderConfirmation';
 import './App.css';
 
 function App() {
@@ -42,6 +43,14 @@ function App() {
                     element={
                       <ProtectedRoute>
                         <Checkout />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/order-confirmation"
+                    element={
+                      <ProtectedRoute>
+                        <OrderConfirmation />
                       </ProtectedRoute>
                     }
                   />
