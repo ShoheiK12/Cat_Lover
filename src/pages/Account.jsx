@@ -4,12 +4,14 @@ import { useReviews } from '../context/ReviewContext';
 import { ReviewHeader } from '../components/ReviewHeader';
 import { useToast } from '../context/ToastContext';
 import { StarRating } from '../components/StarRating';
+import { useOrder } from '../context/OrderContext';
 import { items } from '../data/items';
 
 function Account() {
   const { user, updateUser } = useAuth();
   const { reviews, addReview, deleteReview } = useReviews();
   const { addToast } = useToast();
+  const { orders } = useOrder();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState(user || {});
   const [rating, setRating] = useState(5);
@@ -174,7 +176,45 @@ function Account() {
 
       <div className="account-details">
         <h3 className='detail-headline'>Order History</h3>
-        <p className='account-sentence'>You have no recent orders to display.</p>
+        {orders.length === 0 ? (
+          <p className='account-sentence'>You have no recent orders to display.</p>
+        ) : (
+          <div className="order-history-list">
+            {orders.map((order) => (
+              <div key={order.id} className="order-history-card">
+                <div className="order-history-header">
+                  <div>
+                    <strong>Order ID:</strong> {order.id}
+                  </div>
+                  <div className="order-history-date">
+                    <strong>Date:</strong> {order.date}
+                  </div>
+                  <div>
+                    <strong>Status:</strong> <span className="order-status">{order.status}</span>
+                  </div>
+                </div>
+
+                <div className="order-history-items">
+                  {order.items.map((item) => (
+                    <div key={item.id} className="order-history-item">
+                      <span>{item.name} × {item.quantity}</span>
+                      <span>${(item.price * item.quantity).toLocaleString()}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="order-history-footer">
+                  <div className="order-address">
+                    <strong>Shipping Address:</strong> {order.shippingAddress}
+                  </div>
+                  <div className="order-total">
+                    <strong>Total:</strong> ${order.totalAmount.toLocaleString()}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="account-details">

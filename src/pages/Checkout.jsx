@@ -3,11 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import EmptyState from '../components/EmptyState';
+import { useOrder } from '../context/OrderContext';
 
 function Checkout() {
   const { cartItems, clearCart } = useCart();
   const { showToast } = useToast();
   const navigate = useNavigate();
+  const { addOrder } = useOrder();
+  
+  const [formData, setFormData] = useState({
+    fullName: '',
+    address: '',
+    postcode: '',
+  });
+  
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
   
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -21,11 +34,18 @@ function Checkout() {
       return;
     };
     
+    const shippingAddress = `${formData.address}, ${formData.postcode}`;
+    const createdOrder = addOrder({
+      items: cartItems,
+      totalAmount: totalPrice,
+      shippingAddress: shippingAddress,
+    });
+    
     clearCart();
     
     showToast('Order placed successfully! 🐾', 'success');
     
-    navigate('/order-confirmation');
+    navigate('/order-confirmation', { state: { order: createdOrder } });
   };
   
   // If cart is empty and order not completed yet
@@ -66,17 +86,38 @@ function Checkout() {
         <h3>Delivery Address</h3>
         <div className="form-group">
           <label htmlFor="fullName">Full Name</label>
-          <input type="text" id="fullName" required placeholder="e.g. Oliver Smith" />
+          <input 
+            type="text" 
+            id="fullName" 
+            required 
+            placeholder="e.g. Oliver Smith"
+            value={formData.fullName}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="address">Address Line</label>
-          <input type="text" id="address" required placeholder="e.g. 10 George Street, Sydney" />
+          <input 
+            type="text" 
+            id="address" 
+            required 
+            placeholder="e.g. 10 George Street, Sydney" 
+            value={formData.address}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="postcode">Postcode</label>
-          <input type="text" id="postcode" required placeholder="e.g. 2000" />
+          <input 
+            type="text" 
+            id="postcode" 
+            required 
+            placeholder="e.g. 2000" 
+            value={formData.postcode}
+            onChange={handleChange}
+          />
         </div>
 
         <h3>Payment Details</h3>

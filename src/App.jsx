@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ToastProvider } from './context/ToastContext';
 import { ReviewProvider } from './context/ReviewContext';
+import { OrderProvider } from './context/OrderContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -28,48 +29,50 @@ function App() {
       <CartProvider>
         <WishlistProvider>
           <ToastProvider>
-            <ReviewProvider>
-              <Header />
-              <main className="main-content">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/items/:id" element={<ItemDetail />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/wishlist" element={<Wishlist />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/reviews" element={<Reviews />} />
-                  <Route
-                    path="/checkout"
-                    element={
-                      <ProtectedRoute>
-                        <Checkout />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route
-                    path="/order-confirmation"
-                    element={
-                      <ProtectedRoute>
-                        <OrderConfirmation />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route
-                    path="/account"
-                    element={
-                      <ProtectedRoute>
-                        <Account />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
-              </main>
+            <OrderProvider>
+              <ReviewProvider>
+               <Header />
+               <main className="main-content">
+                 <Routes>
+                   <Route path="/" element={<Home />} />
+                   <Route path="/items/:id" element={<ItemDetail />} />
+                   <Route path="/cart" element={<Cart />} />
+                   <Route path="/wishlist" element={<Wishlist />} />
+                   <Route path="/contact" element={<Contact />} />
+                   <Route path="/reviews" element={<Reviews />} />
+                   <Route
+                     path="/checkout"
+                     element={
+                       <ProtectedRoute>
+                         <Checkout />
+                       </ProtectedRoute>
+                     }
+                   />
+                   <Route
+                     path="/order-confirmation"
+                     element={
+                       <ProtectedRoute>
+                         <OrderConfirmation />
+                       </ProtectedRoute>
+                     }
+                   />
+                   <Route
+                     path="/account"
+                     element={
+                       <ProtectedRoute>
+                         <Account />
+                       </ProtectedRoute>
+                     }
+                   />
+                   <Route path="/about" element={<About />} />
+                   <Route path="/login" element={<Login />} />
+                 </Routes>
+               </main>
             
-              <Footer />
+               <Footer />
             
-            </ReviewProvider>
+             </ReviewProvider>
+            </OrderProvider>
           </ToastProvider>
         </WishlistProvider>
       </CartProvider>

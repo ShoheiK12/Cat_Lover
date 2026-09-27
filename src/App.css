@@ -1656,3 +1656,76 @@ dl.info dd {
     font-size: 0.95rem;
   }
 }
+
+/* Order Confirmation Styles */
+
+.order-confirmation-hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.order-confirmation-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.order-history-items-title {
+  margin: 10px 0 5px 0;
+}
+
+.order-confirmation-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .order-history-card {
+    padding: 12px;
+  }
+
+  .order-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .order-history-item {
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .order-history-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .order-total {
+    align-self: flex-end;
+    font-size: 1.05rem;
+  }
+
+  .order-confirmation-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .order-confirmation-icon {
+    font-size: 2.5rem;
+  }
+
+  .order-confirmation-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .order-confirmation-actions .btn-account {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
