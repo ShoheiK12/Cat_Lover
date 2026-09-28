@@ -61,6 +61,12 @@ The objective of this project was to build a seamless, user-centric online shopp
   - **Interactive Action Buttons:** Primary cart actions paired with dual-state wishlist buttons featuring subtle micro-interactions (`translateY` hover lifts and active scale presses).
 \
 
+### 🛒 Order Management & History
+- **Global Order State (`OrderContext`)**: Manages customer order lifecycle and history across the application.
+- **Dynamic Order Confirmation**: Displays real-time order summaries after checkout with fallback handling for direct URL access or page refreshes.
+- **Account Order History**: Presents personalised order history, including item details, total amounts, delivery addresses, and status tracking.
+- **Responsive Design**: Fully optimised for mobile, tablet, and desktop viewports.
+
 ---
 
 ## Local Development Setup
