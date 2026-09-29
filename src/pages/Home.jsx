@@ -126,7 +126,7 @@ function Home() {
       <Features />
       
       <section id="products-section" className="products-section">
-        <h1 className='products-headline'>Goods for cat lovers</h1>
+        <h1 className='products-headline'>Items for cat lovers</h1>
         <p>Explore our range of favourite items for your feline companions.</p>
 
         <div className="filter-container">
