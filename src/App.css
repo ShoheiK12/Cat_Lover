@@ -303,10 +303,14 @@ main {
 }
 
 .products-headline {
-  padding: 0.5em;
-  color: #010101;
-  background: #efbc58;
-  border-bottom: solid 3px #c57a09;
+  font-size: 3rem;
+  color: #fff;
+  -webkit-text-stroke: 2px #c57a09;
+  text-shadow:
+    1px 1px 0 #c57a09,
+    2px 2px 0 #c57a09,
+    3px 3px 0 #c57a09,
+    4px 4px 0 #c57a09;
 }
 
 .item-list {
@@ -1657,7 +1661,25 @@ dl.info dd {
   }
 }
 
-/* Order Confirmation Styles */
+/* Order Confirmation */
+
+.order-headline {
+  width: fit-content;
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff7eb3, #ffff8c);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bg-animation 3s infinite alternate;
+}
+
+.order-sentence {
+  font-size: 1.5rem;
+  color: transparent;
+  -webkit-text-stroke: 2px #ff6347;
+}
 
 .order-confirmation-hero {
   text-align: center;
