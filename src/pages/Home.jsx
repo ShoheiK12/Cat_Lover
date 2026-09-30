@@ -131,7 +131,7 @@ function Home() {
 
         <div className="filter-container">
           <div className="search-box">
-            <label htmlFor="search">Search Products</label>
+            <label htmlFor="search">Search Items</label>
             <input
               type="text"
               id="search"
@@ -209,7 +209,7 @@ function Home() {
             <h4 className="detail-sentence">Write a Review</h4>
             <form onSubmit={handleReviewSubmit} className="account-form">
               <div className="form-group">
-                <label htmlFor="select-product">Select Product:</label>
+                <label htmlFor="select-product">Select Item:</label>
                 <select
                   id="select-product"
                   value={selectedItemId}
@@ -272,7 +272,7 @@ function Home() {
 
                   {review.itemName && (
                     <div className="review-product-name">
-                      Product: <strong>{review.itemName}</strong>
+                      Item: <strong>{review.itemName}</strong>
                     </div>
                   )}
 
