@@ -1,3 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4eee9;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
 main {
   padding: 20px;
 }
@@ -40,7 +51,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: #ffffff;
+  background-color: transparent;
   border-bottom: 1px solid #e5e7eb;
 }
 
