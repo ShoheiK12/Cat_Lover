@@ -184,7 +184,7 @@ main {
 /* Hero Section */
  
 .hero-section {
-  background: linear-gradient(135deg, #fff5eb 0%, #fde8d7 100%);
+  background: #fdfbf7;
   padding: 60px 20px;
   border-radius: 16px;
   text-align: center;
@@ -670,10 +670,16 @@ main {
 }
 
 .about-headline {
-  color: #963b36;
-  padding: 0.5em 0;
-  border-top: solid 3px #963b36;
-  border-bottom: solid 3px #963b36;
+  font-size: 48px;
+  font-weight: 900;
+  color: #e74c3c;
+  text-shadow: 
+    1px 1px 0 #c0392b,
+    2px 2px 0 #c0392b,
+    3px 3px 0 #c0392b,
+    4px 4px 0 #c0392b,
+    5px 5px 0 #c0392b,
+    6px 6px 0 rgba(0,0,0,0.2);
 }
 
 .info-title {
@@ -694,9 +700,9 @@ dl.info {
 }
 
 dl.info dt {
+  background-color: #1f2937;
+  color: white;
   font-weight: 600;
-  color: #374151;
-  background-color: #f9fafb;
   padding: 14px 16px;
   border-bottom: 1px solid #e5e7eb;
   display: flex;
@@ -705,6 +711,8 @@ dl.info dt {
 
 dl.info dd {
   margin: 0;
+  background-color: white;
+  font-weight: 600;
   padding: 14px 16px;
   border-bottom: 1px solid #e5e7eb;
   color: #4b5563;
@@ -724,12 +732,14 @@ dl.info dd {
   }
 
   dl.info dt {
-    background-color: #f3f4f6;
+    background-color: #1f2937;
+    color: white;
     border-bottom: none;
     padding-bottom: 6px;
   }
 
   dl.info dd {
+    background-color: white;
     padding-top: 4px;
     padding-left: 16px;
   }
@@ -743,10 +753,12 @@ dl.info dd {
 }
 
 .contact-headline {
-  color: #364e96;
-  padding: 0.5em 0;
-  border-top: solid 3px #364e96;
-  border-bottom: solid 3px #364e96;
+  font-size: 48px;
+  font-weight: 900;
+  color: #333;
+  text-shadow: 
+    3px 3px 0 #999,
+    6px 6px 0 #ccc;
 }
 
 .contact-form {
@@ -947,8 +959,12 @@ dl.info dd {
 }
 
 .login-headline {
-  position: relative;
-  padding-left: 25px;
+  font-size: 48px;
+  font-weight: 900;
+  color: #333;
+  text-shadow: 
+    3px 3px 0 #999,
+    6px 6px 0 #ccc;
 }
 
 .login-headline:before {
