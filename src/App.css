@@ -493,11 +493,13 @@ main {
 }
 
 .wishlist-headline {
+  font-size: 48px;
+  font-weight: 900;
+  color: #ff938b;
+  text-shadow: 
+    3px 3px 0 #999,
+    6px 6px 0 #ccc;
   position: relative;
-  padding-left: 1.2em;
-  line-height: 1.4;
-  color: #364e96;
-  font-size: 2rem;
 }
 
 .wishlist-headline:before {
@@ -632,11 +634,13 @@ main {
 /* Shopping Cart */
 
 .cart-headline {
-  position: relative;
-  padding-left: 1.2em;
-  line-height: 1.4;
+  font-size: 48px;
+  font-weight: 900;
   color: #36964c;
-  font-size: 2rem;
+  text-shadow: 
+    3px 3px 0 #999,
+    6px 6px 0 #ccc;
+  position: relative;
 }
 
 .cart-headline:before {
@@ -838,10 +842,21 @@ dl.info dd {
 /* Account Page / Login Page */
 
 .account-headline {
-  color: #c0251d;
-  padding: 0.5em 0;
-  border-top: solid 3px #c0251d;
-  border-bottom: solid 3px #c0251d;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(90deg, 
+    #12c2e9, #c471ed, #f64f59, #12c2e9);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .account-sentence {
