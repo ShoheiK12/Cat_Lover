@@ -493,10 +493,23 @@ main {
 }
 
 .wishlist-headline {
+  position: relative;
+  padding-left: 1.2em;
+  line-height: 1.4;
   color: #364e96;
-  padding: 0.5em 0;
-  border-top: solid 3px #364e96;
-  border-bottom: solid 3px #364e96;
+  font-size: 2rem;
+}
+
+.wishlist-headline:before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f004";
+  font-weight: 900;
+  position: absolute;
+  font-size: 1em;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff938b;
 }
 
 .wishlist-empty {
@@ -619,10 +632,22 @@ main {
 /* Shopping Cart */
 
 .cart-headline {
+  position: relative;
+  padding-left: 1.2em;
+  line-height: 1.4;
   color: #36964c;
-  padding: 0.5em 0;
-  border-top: solid 3px #36964c;
-  border-bottom: solid 3px #36964c;
+  font-size: 2rem;
+}
+
+.cart-headline:before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f1b0";
+  font-weight: 900;
+  position: absolute;
+  font-size: 1em;
+  left: 0;
+  top: 0;
+  color: #ff938b;
 }
 
 .cart-list {
