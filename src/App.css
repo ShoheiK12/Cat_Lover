@@ -1798,6 +1798,15 @@ dl.info dd {
   margin-top: 20px;
 }
 
+.order-divider {
+  height: 0;
+  margin: 20px 0;
+  padding: 0;
+  border: 0;
+  border-top: 2px dashed #9dd1ff;
+  background-color: #56b0ff;
+}
+
 @media (max-width: 640px) {
   .order-history-card {
     padding: 12px;

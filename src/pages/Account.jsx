@@ -198,6 +198,7 @@ function Account() {
                   {order.items.map((item) => (
                     <div key={item.id} className="order-history-item">
                       <span>{item.name} × {item.quantity}</span>
+                      <br />
                       <span>${(item.price * item.quantity).toLocaleString()}</span>
                     </div>
                   ))}
@@ -211,6 +212,8 @@ function Account() {
                     <strong>Total:</strong> ${order.totalAmount.toLocaleString()}
                   </div>
                 </div>
+                
+                <hr className="order-divider" />
               </div>
             ))}
           </div>
