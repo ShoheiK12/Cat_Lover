@@ -713,12 +713,12 @@ main {
 
 .info-title {
   font-size: 1.5rem;
-  margin-top: 50px;
-  margin-bottom: 30px;
-  padding: 0.25em 0.5em;
+  padding: 0.4em 0.5em;
+  margin-top: 30px;
   color: #e6bc7d;
-  background: transparent;
+  background: #f4f4f4;
   border-left: solid 5px #e6bc7d;
+  border-bottom: solid 3px #d7d7d7;
 }
 
 dl.info {
