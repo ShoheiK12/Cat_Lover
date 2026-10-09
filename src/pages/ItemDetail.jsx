@@ -4,6 +4,7 @@ import { items } from '../data/items';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
+import ReviewList from '../components/ReviewList';
 import { StarRating } from '../components/StarRating';
 import { ReviewHeader } from '../components/ReviewHeader';
 import { useToast } from '../context/ToastContext';
@@ -134,8 +135,12 @@ function ItemDetail() {
       </div>
 
       <hr className="review-divider" />
-
+      
       <div className="item-reviews-section">
+        <ReviewList itemId={item.id} />
+      </div>
+
+      {/* <div className="item-reviews-section">
         
         <div className="reviews-header-flex">
           <h3>Customer Reviews ({itemReviews.length})</h3>
@@ -225,7 +230,7 @@ function ItemDetail() {
             })
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

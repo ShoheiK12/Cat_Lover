@@ -201,9 +201,9 @@ function Home() {
         )}
       </section>
       
-      {/* <ReviewList /> */}
+      <ReviewList />
       
-      <section className="reviews-section">
+      {/* <section className="reviews-section">
         <h2 className='reviews-headline'>Customer Reviews</h2>
         <ReviewHeader />
 
@@ -295,7 +295,7 @@ function Home() {
             })
           )}
         </div>
-      </section>
+      </section> */}
       
     </div>
   );
