@@ -157,9 +157,7 @@ main {
 .contact-container,
 .checkout-container,
 .account-container,
-.about-container,
-.cart-container,
-.item-detail-container {
+.about-container {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -569,6 +567,9 @@ main {
 }
 
 .btn-wishlist {
+  background-color: #fdf2f8;
+  color: #db2777;
+  border-color: #fbcfe8;
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 4px;
@@ -582,11 +583,6 @@ main {
   box-sizing: border-box;
 }
 
-.btn-wishlist {
-  background-color: #fdf2f8;
-  color: #db2777;
-  border-color: #fbcfe8;
-}
 
 .btn-wishlist:hover {
   background-color: #fce7f3;
@@ -615,11 +611,18 @@ main {
 .btn-danger {
   background-color: #ef4444;
   color: #fff;
+  font-size: 14px;
   border: none;
-  padding: 6px 12px;
+  margin-top: 10px;
+  padding: 15px 30px;
   border-radius: 4px;
   cursor: pointer;
 }
+
+.btn-danger:hover {
+  background-color: #a52f2f;
+}
+
 
 .btn-checkout {
   display: inline-block;
@@ -629,6 +632,11 @@ main {
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
+}
+
+.btn-checkout:hover {
+  background-color: #1d51c2;
+  transform: translateY(-2px);
 }
 
 /* Shopping Cart */
@@ -721,14 +729,14 @@ main {
   border-bottom: solid 3px #d7d7d7;
 }
 
-dl.info {
+dl.info-table {
   display: grid;
   grid-template-columns: 160px 1fr;
   border-top: 1px solid #e5e7eb;
   margin: 20px 0 30px 0;
 }
 
-dl.info dt {
+dl.info-table dt {
   background-color: #1f2937;
   color: white;
   font-weight: 600;
@@ -738,7 +746,7 @@ dl.info dt {
   align-items: center;
 }
 
-dl.info dd {
+dl.info-table dd {
   margin: 0;
   background-color: white;
   font-weight: 600;
@@ -756,18 +764,18 @@ dl.info dd {
 }
 
 @media (max-width: 600px) {
-  dl.info {
+  dl.info-table {
     grid-template-columns: 1fr;
   }
 
-  dl.info dt {
+  dl.info-table dt {
     background-color: #1f2937;
     color: white;
     border-bottom: none;
     padding-bottom: 6px;
   }
 
-  dl.info dd {
+  dl.info-table dd {
     background-color: white;
     padding-top: 4px;
     padding-left: 16px;
@@ -1296,7 +1304,7 @@ dl.info dd {
   text-align: center;
 }
 
-.reviews-cta {
+.reviews-write-manage {
   text-align: center;
   margin-top: 32px;
 }

@@ -25,7 +25,7 @@ function ReviewList() {
         ))}
       </div>
 
-      <div className="reviews-cta">
+      <div className="reviews-write-manage">
         <Link to="/reviews" className="btn-secondary">
           Write or Manage Reviews →
         </Link>

@@ -13,7 +13,7 @@ function About() {
       </p>
       <h2 className="info-title">Company Information</h2>
         <div>
-          <dl className="info">
+          <dl className="info-table">
             <dt>Company name</dt>
             <dd>CAT LIFE Inc.</dd>
             <dt>Address</dt>

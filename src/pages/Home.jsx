@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
 import { StarRating } from '../components/StarRating';
+import ReviewList from '../components/ReviewList';
 import { ReviewHeader } from '../components/ReviewHeader'; 
 import AverageRating from '../../utils/reviewUtils';
 
@@ -199,6 +200,8 @@ function Home() {
           </div>
         )}
       </section>
+      
+      {/* <ReviewList /> */}
       
       <section className="reviews-section">
         <h2 className='reviews-headline'>Customer Reviews</h2>
