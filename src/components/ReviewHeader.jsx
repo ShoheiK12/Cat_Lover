@@ -1,4 +1,3 @@
-import React from 'react';
 import { useReviews } from '../context/ReviewContext';
 
 export const ReviewHeader = () => {
