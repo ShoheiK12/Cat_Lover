@@ -13,6 +13,13 @@ main {
   padding: 20px;
 }
 
+.directions {
+  font-size: 1.5rem;
+  color: #333;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
 /* Form-style */
 
 .form-group {

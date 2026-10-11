@@ -105,7 +105,7 @@ function Login() {
   return (
     <div className="account-container">
       <h1 className="login-headline">Login</h1>
-      <p>Please enter your email and password to log in.</p>
+      <p className='directions'>Please enter your email and password to log in.</p>
 
       <form onSubmit={handleSubmit} className="account-form" noValidate>
         <div className="form-group">

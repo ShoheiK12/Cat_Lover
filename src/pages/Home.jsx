@@ -7,7 +7,6 @@ import { useAuth } from '../context/AuthContext';
 import { useReviews } from '../context/ReviewContext';
 import { StarRating } from '../components/StarRating';
 import ReviewList from '../components/ReviewList';
-import { ReviewHeader } from '../components/ReviewHeader'; 
 import AverageRating from '../../utils/reviewUtils';
 
 function Features() {
@@ -128,7 +127,7 @@ function Home() {
       
       <section id="products-section" className="products-section">
         <h1 className='products-headline'>Items for cat lovers</h1>
-        <p>Explore our range of favourite items for your feline companions.</p>
+        <p className='directions'>Explore our range of favourite items for your feline companions.</p>
 
         <div className="filter-container">
           <div className="search-box">
@@ -202,100 +201,6 @@ function Home() {
       </section>
       
       <ReviewList />
-      
-      {/* <section className="reviews-section">
-        <h2 className='reviews-headline'>Customer Reviews</h2>
-        <ReviewHeader />
-
-        {user ? (
-          <div className="review-form-container">
-            <h4 className="detail-sentence">Write a Review</h4>
-            <form onSubmit={handleReviewSubmit} className="account-form">
-              <div className="form-group">
-                <label htmlFor="select-product">Select Item:</label>
-                <select
-                  id="select-product"
-                  value={selectedItemId}
-                  onChange={(e) => setSelectedItemId(e.target.value)}
-                  className="review-select"
-                >
-                  {items.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.name} (${item.price})
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label>Rating:</label>
-                <StarRating rating={rating} onRate={(val) => setRating(val)} />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="home-rev-comment">Your Review:</label>
-                <textarea
-                  id="home-rev-comment"
-                  rows="3"
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  placeholder="Leave a review"
-                  className="review-textarea"
-                />
-              </div>
-
-              <button type="submit" className="btn-primary">
-                Post Review
-              </button>
-            </form>
-          </div>
-        ) : (
-          <div className="login-prompt">
-            <p>Want to leave or manage a review? Please log in to your account.</p>
-          </div>
-        )}
-
-        <div className="review-list">
-          {reviews.length === 0 ? (
-            <p>No reviews posted yet.</p>
-          ) : (
-            reviews.map((review) => {
-              const isOwner =
-                user &&
-                ((review.userId && String(user.id || user.email) === String(review.userId)) ||
-                  user.name === review.name ||
-                  user.email === review.name);
-
-              return (
-                <div key={review.id} className="review-card">
-                  <div className="review-card-header">
-                    <strong>{review.name}</strong>
-                    <span className="review-date">{review.date}</span>
-                  </div>
-
-                  {review.itemName && (
-                    <div className="review-product-name">
-                      Item: <strong>{review.itemName}</strong>
-                    </div>
-                  )}
-
-                  <StarRating rating={review.rating} readOnly />
-                  <p className="review-comment">{review.comment}</p>
-
-                  {isOwner && (
-                    <button
-                      onClick={() => handleDeleteReview(review.id)}
-                      className="btn-delete-review"
-                    >
-                      Delete
-                    </button>
-                  )}
-                </div>
-              );
-            })
-          )}
-        </div>
-      </section> */}
       
     </div>
   );
