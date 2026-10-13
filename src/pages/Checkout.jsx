@@ -66,7 +66,7 @@ function Checkout() {
   
   return (
     <div className="checkout-container">
-      <h2>Checkout</h2>
+      <h2 className='checkout-headline'>Checkout</h2>
 
       <div className="order-summary">
         <h3>Order Summary</h3>
