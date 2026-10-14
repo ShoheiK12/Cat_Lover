@@ -82,7 +82,8 @@ function Checkout() {
         </div>
       </div>
 
-      <form className="contact-form" onSubmit={handlePayment}>
+      <div className="delivery-summary">
+        <form className="contact-form" onSubmit={handlePayment}>
         <h3>Delivery Address</h3>
         <div className="form-group">
           <label htmlFor="fullName">Full Name</label>
@@ -130,6 +131,8 @@ function Checkout() {
           Pay Now (${totalPrice.toLocaleString()})
         </button>
       </form>
+      </div>
+      
     </div>
   );
 }
