@@ -41,10 +41,10 @@ function Features() {
       </div>
       <div className="features-grid">
         {featureList.map((feature, index) => (
-          <div key={index} className="feature-card">
-            <span className="feature-icon">{feature.icon}</span>
-            <h3 className="feature-title">{feature.title}</h3>
-            <p className="feature-description">{feature.description}</p>
+          <div key={index} className="features-card">
+            <span className="features-icon">{feature.icon}</span>
+            <h3 className="features-title">{feature.title}</h3>
+            <p className="features-description">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -62,10 +62,6 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   
-  const [selectedItemId, setSelectedItemId] = useState(items[0]?.id || '');
-  const [rating, setRating] = useState(5);
-  const [comment, setComment] = useState('');
-  
   const handleAddToCart = (item) => {
     addToCart(item);
     showToast(`Added "${item.name}" to your cart!`);
@@ -81,35 +77,6 @@ function Home() {
 
     return matchesSearch && matchesCategory;
   });
-  
-  const handleReviewSubmit = (e) => {
-    e.preventDefault();
-    if (!comment.trim()) {
-      showToast('Please enter a valid comment.');
-      return;
-    }
-
-    const selectedItem = items.find((item) => String(item.id) === String(selectedItemId));
-
-    addReview({
-      userId: user?.id || user?.email,
-      name: user?.name || user?.email || 'Anonymous',
-      itemId: selectedItem?.id || '',
-      itemName: selectedItem?.name || '',
-      rating: Number(rating),
-      comment,
-      date: new Date().toLocaleDateString(),
-    });
-
-    setComment('');
-    setRating(5);
-    showToast('Review submitted successfully!');
-  };
-
-  const handleDeleteReview = (reviewId) => {
-    deleteReview(reviewId);
-    showToast('Review deleted.');
-  };
 
   return (
     <div className="page-container">

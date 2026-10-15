@@ -279,7 +279,7 @@ main {
   gap: 20px;
 }
 
-.feature-card {
+.features-card {
   background: #ffffff;
   padding: 24px 16px;
   border-radius: 12px;
@@ -288,25 +288,25 @@ main {
   border: 1px solid #f0f0f0;
 }
 
-.feature-card:hover {
+.features-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.feature-icon {
+.features-icon {
   font-size: 2.5rem;
   display: block;
   margin-bottom: 12px;
 }
 
-.feature-title {
+.features-title {
   font-size: 1.15rem;
   color: #2c3e50;
   margin-bottom: 8px;
   font-weight: 600;
 }
 
-.feature-description {
+.features-description {
   font-size: 0.9rem;
   color: #666;
   line-height: 1.4;
