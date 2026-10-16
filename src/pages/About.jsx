@@ -2,11 +2,11 @@ function About() {
   return (
     <div className="about-container">
       <h1 className="about-headline">About Cat Lover website</h1>
-      <p>
-        Welcome to <strong>Cat Lover</strong>! We specialise in providing premium quality products tailored for your feline companions.
+      <p className="about-welcome-message">
+        Welcome to <strong>Cat Lover</strong>!
       </p>
       <p>
-        Founded with a passion for animal welfare, our mission is to deliver items that promote the health, comfort, and happiness of every cat. From organic cat grass to cozy hammocks, all our items are carefully selected to ensure your pet receives the very best.
+        We specialise in providing premium quality products tailored for your feline companions. Founded with a passion for animal welfare, our mission is to deliver items that promote the health, comfort, and happiness of every cat. From organic cat grass to cozy hammocks, all our items are carefully selected to ensure your pet receives the very best.
       </p>
       <p>
         Thank you for choosing us as your favoured online pet shop!
