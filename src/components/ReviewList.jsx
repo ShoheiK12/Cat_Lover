@@ -45,7 +45,7 @@ function ReviewList({ itemId }) {
      
       {user ? (
         <div className="review-form-container">
-          <h4 className="detail-sentence">
+          <h4 className="detail-instruction">
             {itemId && targetItem ? `Write a Review for ${targetItem.name}` : 'Write a Review'}
           </h4>
           <form onSubmit={handleReviewSubmit} className="account-form">

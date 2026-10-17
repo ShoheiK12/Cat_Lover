@@ -106,7 +106,7 @@ function Account() {
   return (
     <div className="account-container">
       <h1 className='account-headline'>Account Settings</h1>
-      <p className='account-sentence'>Manage your account details and view your recent orders.</p>
+      <p className='account-instruction'>Manage your account details and view your recent orders.</p>
 
       <div className="account-details">
         <h3 className='detail-headline'>Personal Details</h3>
@@ -177,7 +177,7 @@ function Account() {
       <div className="account-details">
         <h3 className='detail-headline'>Order History</h3>
         {orders.length === 0 ? (
-          <p className='account-sentence'>You have no recent orders to display.</p>
+          <p className='account-instruction'>You have no recent orders to display.</p>
         ) : (
           <div className="order-history-list">
             {orders.map((order) => (
@@ -223,7 +223,7 @@ function Account() {
       <div className="account-details">
         <h3 className='detail-headline'>My Reviews</h3>
         <div className="review-form-container">
-          <h4 className='detail-sentence'>Write a New Review</h4>
+          <h4 className='detail-instruction'>Write a New Review</h4>
           <form onSubmit={handleReviewSubmit} className="account-form">
             
             <div className="form-group">

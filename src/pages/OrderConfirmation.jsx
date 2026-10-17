@@ -28,7 +28,7 @@ function OrderConfirmation() {
       <div className="order-confirmation-hero">
         <div className="order-confirmation-icon">🎉</div>
         <h1 className='order-headline'>Thank You for Your Order! 🐾</h1>
-        <p className="order-sentence">
+        <p className="receive-message">
           We have received your order and are preparing your cat supplies with care!
         </p>
       </div>

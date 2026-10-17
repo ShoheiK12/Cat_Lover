@@ -923,7 +923,7 @@ dl.info-table dd {
   100% { background-position: 0% 50%; }
 }
 
-.account-sentence {
+.account-instruction {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(transparent 50%, #d7f465 50%);
@@ -947,13 +947,13 @@ dl.info-table dd {
   padding: 0.5em;
 }
 
-.detail-sentence {
+.detail-instruction {
   position: relative;
   padding: 0.6em;
   background: #efec33;
 }
 
-.detail-sentence:after {
+.detail-instruction:after {
   position: absolute;
   content: '';
   top: 100%;
@@ -1837,7 +1837,7 @@ dl.info-table dd {
   animation: bg-animation 3s infinite alternate;
 }
 
-.order-sentence {
+.receive-message {
   font-size: 1.5rem;
   color: transparent;
   -webkit-text-stroke: 2px #ff6347;
