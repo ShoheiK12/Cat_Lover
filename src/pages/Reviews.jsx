@@ -4,6 +4,7 @@ import { useReviews } from '../context/ReviewContext';
 import { ReviewHeader } from '../components/ReviewHeader';
 import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function Reviews() {
   const { user } = useAuth();
@@ -109,7 +110,7 @@ function Reviews() {
             </form>
           ) : (
             <div className="login-prompt">
-              <p>Please log in to your account to write or manage reviews.</p>
+              <p>Please <Link to="/login" className="login-link">log in your accout </Link>to write or manage a review.</p>
             </div>
           )}
         </div>

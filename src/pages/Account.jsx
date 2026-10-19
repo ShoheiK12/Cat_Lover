@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import { StarRating } from '../components/StarRating';
 import { useOrder } from '../context/OrderContext';
 import { items } from '../data/items';
+import { Link } from 'react-router-dom';
 
 function Account() {
   const { user, updateUser } = useAuth();
@@ -38,7 +39,7 @@ function Account() {
     return (
       <div className="account-container">
         <h1>Account Settings</h1>
-        <p>Please log in to view your account settings.</p>
+        <p>Please <Link to="/login" className="login-link">log in to your account</Link>to view your account settings.</p>
       </div>
     );
   }

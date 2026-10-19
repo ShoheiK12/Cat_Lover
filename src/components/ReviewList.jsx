@@ -92,7 +92,7 @@ function ReviewList({ itemId }) {
         </div>
       ) : (
         <div className="login-prompt">
-          <p>Please log in to write or manage a review.</p>
+          <p>Please <Link to="/login" className="login-link">log in your accout </Link>to write or manage a review.</p>
         </div>
       )}
 
