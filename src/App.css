@@ -741,6 +741,10 @@ main {
   border-bottom: solid 3px #d7d7d7;
 }
 
+.company-name {
+  font-size: 1.5rem;
+}
+
 dl.info-table {
   display: grid;
   grid-template-columns: 160px 1fr;

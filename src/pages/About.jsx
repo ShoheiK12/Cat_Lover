@@ -15,7 +15,7 @@ function About() {
         <div>
           <dl className="info-table">
             <dt>Company name</dt>
-            <dd>CAT LIFE Inc.</dd>
+            <dd className="company-name">CAT LIFE Inc.</dd>
             <dt>Address</dt>
             <dd>123 George Street, Sydeny NSW, 2000</dd>
             <dt>Establishment</dt>
