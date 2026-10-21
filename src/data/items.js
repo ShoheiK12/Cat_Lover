@@ -43,7 +43,7 @@ export const items = [
     id: '6',
     name: 'Relaxing Cat Bed',
     price: 100,
-    category: 'Food & Treats',
+    category: 'Beds & Furniture',
     image: '/images/cat-bed.jpg',
     description: 'Warm cat bed making your feline friends unwind'
   },
