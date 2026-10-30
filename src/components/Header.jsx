@@ -26,11 +26,11 @@ function Header() {
           Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
         </Link>
         <Link to="/cart">
-          Shopping Cart {totalItems > 0 && `(${totalItems})`}
+          Cart {totalItems > 0 && `(${totalItems})`}
         </Link>
 
         {user ? (
-          <Link to="/account">Account Settings</Link>
+          <Link to="/account">Account</Link>
         ) : (
           <Link to="/login">Login</Link>
         )}

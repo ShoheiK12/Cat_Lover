@@ -55,4 +55,12 @@ export const items = [
     image: '/images/cat-treat.jpg',
     description: 'Delicious snacks making your soul mate happy'
   },
+  {
+    id: '8',
+    name: 'Cat Tunnel',
+    price: 25,
+    category: 'Toys',
+    image: '/images/cat-tunnel.jpg',
+    description: 'The tunnel leads your feline friends to adventure'
+  },
 ];

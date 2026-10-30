@@ -70,7 +70,7 @@ main {
 /* Animated Nav Bar */
 .header-nav {
   position: relative;
-  width: 800px;
+  width: 860px;
   height: 50px;
   background-color: #34495e;
   border-radius: 8px;
@@ -82,7 +82,7 @@ main {
 .header-nav > .nav-placeholder {
   line-height: 50px;
   height: 100%;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   display: inline-block;
   vertical-align: top;
@@ -115,12 +115,13 @@ main {
   border-radius: 8px;
 }
 
-.header-nav > *:nth-child(1) { width: 90px; }   /* Home */
-.header-nav > *:nth-child(2) { width: 190px; }  /* About */
-.header-nav > *:nth-child(3) { width: 100px; }  /* Contact */
-.header-nav > *:nth-child(4) { width: 140px; }  /* Shopping Cart */
-.header-nav > *:nth-child(5) { width: 160px; }  /* Account Settings / Login */
-.header-nav > *:nth-child(6) { width: 120px; }  /* Logout / Placeholder */
+.header-nav > *:nth-child(1) { width: 90px; }
+.header-nav > *:nth-child(2) { width: 100px; }
+.header-nav > *:nth-child(3) { width: 100px; }
+.header-nav > *:nth-child(4) { width: 120px; }
+.header-nav > *:nth-child(5) { width: 110px; }
+.header-nav > *:nth-child(6) { width: 130px; }
+.header-nav > *:nth-child(7) { width: 210px; }
 
 .header-nav .start-home,
 .header-nav > *:nth-child(1):hover ~ .animation {
@@ -130,33 +131,39 @@ main {
 }
 
 .header-nav > *:nth-child(2):hover ~ .animation {
-  width: 190px;
+  width: 100px;
   left: 90px;
   background-color: #e74c3c;
 }
 
 .header-nav > *:nth-child(3):hover ~ .animation {
   width: 100px;
-  left: 280px;
+  left: 190px;
   background-color: #3498db;
 }
 
 .header-nav > *:nth-child(4):hover ~ .animation {
-  width: 140px;
-  left: 380px;
+  width: 120px;
+  left: 290px;
   background-color: #9b59b6;
 }
 
 .header-nav > *:nth-child(5):hover ~ .animation {
-  width: 160px;
-  left: 520px;
+  width: 110px;
+  left: 410px;
   background-color: #e67e22;
 }
 
 .header-nav > *:nth-child(6):hover ~ .animation {
-  width: 120px;
-  left: 680px;
+  width: 130px;
+  left: 520px;
   background-color: #e74c3c;
+}
+
+.header-nav > *:nth-child(7):hover ~ .animation {
+  width: 210px;
+  left: 650px;
+  background-color: #9ba825;
 }
 
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { items } from '../data/items';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import { useReviews } from '../context/ReviewContext';
 import { StarRating } from './StarRating';
 import { ReviewHeader } from './ReviewHeader';
@@ -9,6 +10,7 @@ import { ReviewHeader } from './ReviewHeader';
 function ReviewList({ itemId }) {
   const { user } = useAuth();
   const { reviews, addReview, deleteReview } = useReviews();
+  const { addToast } = useToast();
 
   const [selectedItemId, setSelectedItemId] = useState(itemId || items[0]?.id || '');
   const [rating, setRating] = useState(5);
@@ -23,7 +25,10 @@ function ReviewList({ itemId }) {
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
-    if (!comment.trim()) return;
+    if (!comment.trim()) {
+      addToast('Please enter a valid comment.', 'error');
+      return;
+    }
 
     addReview({
       itemId: itemId || selectedItemId,
@@ -34,6 +39,12 @@ function ReviewList({ itemId }) {
 
     setComment('');
     setRating(5);
+    addToast('Review submitted successfully!', 'success');
+  };
+  
+  const handleDeleteReview = (reviewId) => {
+    deleteReview(reviewId);
+    addToast('Review deleted.', 'info');
   };
 
   return (
@@ -92,7 +103,7 @@ function ReviewList({ itemId }) {
         </div>
       ) : (
         <div className="login-prompt">
-          <p>Please <Link to="/login" className="login-link">log in your accout </Link>to write or manage a review.</p>
+          <p>Please <Link to="/login" className="login-link">log in your account </Link>to write or manage a review.</p>
         </div>
       )}
 
@@ -125,7 +136,7 @@ function ReviewList({ itemId }) {
 
                 {isOwner && (
                   <button
-                    onClick={() => deleteReview(review.id)}
+                    onClick={() => handleDeleteReview(review.id)}
                     className="btn-delete-review"
                   >
                     Delete
